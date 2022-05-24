@@ -3,6 +3,8 @@
 ALLEGRO_BITMAP * Stage::sheet1;
 ALLEGRO_BITMAP * Stage::sheet2;
 Observer * Stage::eventsObserver;
+PlayerSubject * Stage::playerSubject;
+BombSubject * Stage::bombSubject;
 vector<Visitor *> Stage::visitorlist; 
 
   Stage::Stage(int stage){
@@ -10,6 +12,8 @@ vector<Visitor *> Stage::visitorlist;
     Stage::sheet1 = NULL;
     Stage::sheet2 = NULL;
     Stage::eventsObserver = NULL;
+    Stage::playerSubject = new PlayerSubject;
+    Stage::bombSubject = new BombSubject;
 
     Stage::visitorlist = vector<Visitor *>();
     
@@ -17,7 +21,7 @@ vector<Visitor *> Stage::visitorlist;
     Stage::eventsObserver = new Observer(*subject);
     
     StageSelector * selector = StageSelector::StageFactory(stage);
-       
+    this->observer = new PlayerObserver(* Stage::playerSubject);   
     
     if(!Stage::sheet1){
     
@@ -61,11 +65,9 @@ vector<Visitor *> Stage::visitorlist;
     selector->LoadDestructableComponents(this->componentList);
     selector->LoadMobs(this->componentList);
     selector->LoadPlayerOne(this->componentList);
-    Component * bomb = new Bomb(4,4);
-    this->componentList.push_back(bomb);
+    
     
     delete selector;
- 
   }
 
   void Stage::GetSheet(Component * component, int sheet){
@@ -91,7 +93,8 @@ vector<Visitor *> Stage::visitorlist;
     
     subject->Detach(Stage::eventsObserver); 
     delete Stage::eventsObserver;
-
+    delete playerSubject;
+    delete bombSubject;
   }
   
   void Stage::Run() {   
@@ -165,10 +168,17 @@ vector<Visitor *> Stage::visitorlist;
     al_get_keyboard_state(&keyState);
 
     if (al_key_down(&keyState, ALLEGRO_KEY_SPACE)){
-      return this->Handle();
+        
+      
+      if(this->bombSubject->CanSpawnBombs(1) == 0){
+        printf("\naqui");
+        Component * bomb = new Bomb(this->observer->GetLine(),this->observer->GetColumn());
+        this->componentList.push_back(bomb);
+      }
     }
 
     if(al_key_down(&keyState, ALLEGRO_KEY_UP)){
+      
       this->subject->CreateEvent(UP);
     }	
 
@@ -186,7 +196,13 @@ vector<Visitor *> Stage::visitorlist;
     
     this->ProcessVisitors();
     this->ProcessMovements();
-   
+    // printf("\nlife: %d",this->observer->GetLife());
+    // printf("\nLine: %d",this->observer->GetLine());
+    // printf("\nColumn: %d",this->observer->GetColumn());
+    // printf("\nSpeed: %d",this->observer->GetSpeed());
+    // printf("\nBombStrength: %d",this->observer->GetBombStrength());
+    // printf("\nevent: %d",this->observer->GetEvent());
+    
     return true;
   }
 

@@ -12,6 +12,7 @@
 #include "../Scenes/Stage.h"
 #include "../Engine/BaseClass.h"
 #include "../Engine/Collider.h"
+#include "../Engine/BombTracker.h"
 
 
 #define BOMB_SX             922
@@ -42,6 +43,7 @@ class Bomb : public Component{
       int row;   
       int column;    
   };   
+  BombObserver * bombObserver = NULL;
 
  public:
   

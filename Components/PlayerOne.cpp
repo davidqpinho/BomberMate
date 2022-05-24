@@ -42,6 +42,9 @@ PlayerOne::PlayerOne(int row, int column): Movable(this){
     this->DefineBlockPosition(row, column);  
     this->visitor = new PlayerOneVisitor(this);   
     Stage::visitorlist.push_back(this->visitor);  
+    this->observer = new PlayerObserver(* Stage::playerSubject);
+
+    UpdatePlayerStatus;
     
 } 
 
@@ -119,6 +122,8 @@ void PlayerOne::Colide() {
 }
 
 void PlayerOne::Move() {
+
+    UpdatePlayerStatus;
 
     int event = Stage::eventsObserver->GetEvent();
     

@@ -22,9 +22,12 @@ Bomb::Bomb(int row, int column){
     this->DefineBlockPosition(row, column);       
     this->visitor = new BombVisitor(this);
     Stage::visitorlist.push_back(this->visitor); 
+    this->bombObserver = new BombObserver(* Stage::bombSubject);
 } 
   
 Bomb::~Bomb(){
+   this->bombObserver->RemoveMeFromTheList();
+   delete this->bombObserver; 
    Visitor::RemoveVisitor( Stage::visitorlist, (Visitor *)this->visitor);
 }
 

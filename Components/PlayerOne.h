@@ -10,6 +10,7 @@
 #include "../Engine/MovementState.h"
 #include "../Engine/BaseClass.h"
 #include "../Engine/Collider.h"
+#include "../Engine/PlayerObserver.h"
 
 #define INITIAL_SPEED  8
 
@@ -45,6 +46,8 @@
 #define P_ONE_D_S2_SY  98
 #define P_ONE_D_S3_SX  430
 #define P_ONE_D_S3_SY  98
+#define UpdatePlayerStatus  this->observer->SetStatus(this->life, this->bombStrength, this->speed, this->column, this->row)
+
 
 class PlayerOneVisitor;
 
@@ -53,6 +56,7 @@ class PlayerOne : public Component, public Movable {
  private:
   int life = 3, bombStrength = 0, speed = 8;
   int initialRow, initialColumn;
+  PlayerObserver * observer = NULL;
 
  public:
   

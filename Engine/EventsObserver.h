@@ -4,6 +4,7 @@
 #include <string>
 
 using namespace std;
+
 class IObserver {
  public:
   virtual ~IObserver(){};

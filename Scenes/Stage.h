@@ -19,6 +19,8 @@
 #include "../Engine/EventsObserver.h"
 #include "../Engine/MovementState.h"
 #include "../Components/Bomb.h"
+#include "../Engine/PlayerObserver.h"
+#include "../Engine/BombTracker.h"
 
 #define STAGE_RUNNING     0
 #define STAGE_GAME_OVER   1
@@ -34,6 +36,8 @@ using namespace std;
     ALLEGRO_BITMAP * stageMap = NULL;  
     ALLEGRO_FONT * stageFont = NULL;  
     Subject *subject = NULL;
+    PlayerObserver * observer = NULL;
+    
     int testeCounter = 150;
     
     void ProcessVisitors();
@@ -45,6 +49,8 @@ using namespace std;
 
     static ALLEGRO_BITMAP * sheet1;
     static ALLEGRO_BITMAP * sheet2;
+    static PlayerSubject * playerSubject;
+    static BombSubject * bombSubject;
     static Observer *eventsObserver;
     static vector<Visitor *> visitorlist; 
 
