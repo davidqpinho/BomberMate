@@ -20,6 +20,8 @@ class IBombSubject {
   //virtual ~ISubject(){};
   virtual void Attach(IBombObserver *observer) = 0;
   virtual void Detach(IBombObserver *observer) = 0;
+  virtual void AddBombSet() = 0;
+  virtual void RemoveBombSet() = 0;
   virtual void Notify(int event) = 0;
 };
 
@@ -34,15 +36,20 @@ class BombSubject : public IBombSubject {
 
   void Notify(int event) override;
 
+  void AddBombSet() override;
+  
+  void RemoveBombSet() override;
+
   void CreateEvent(int event);
 
   int CanSpawnBombs(int playerBombs);
 
+  int bombsSet = 0;
+
  private:
 
   list<IBombObserver *> list_observer_;
-  int bombsSet = 0;
-
+  
 };
 
 class BombObserver : public IBombObserver {

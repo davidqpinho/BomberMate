@@ -26,10 +26,20 @@ int BombObserver::GetEvent(){
 }
 
 void BombObserver::RemoveMeFromTheList() {
-
+    
     subject_.Detach(this);
 
 }   
+
+void BombSubject::AddBombSet()
+{
+        this->bombsSet ++ ;
+}
+
+void BombSubject::RemoveBombSet()
+{
+        this->bombsSet -- ;
+}
   
 void BombSubject::Attach(IBombObserver *observer) {
 
@@ -39,10 +49,12 @@ void BombSubject::Attach(IBombObserver *observer) {
 
 void BombSubject::Detach(IBombObserver *observer) {
     
-    list_observer_.remove(observer);
     
     if(this->bombsSet > 0)
-        this->bombsSet -- ;
+        this->RemoveBombSet();
+    
+    
+    list_observer_.remove(observer);
 }
 
 void BombSubject::Notify(int event) {
@@ -65,7 +77,7 @@ void BombSubject::CreateEvent(int event) {
 int BombSubject::CanSpawnBombs(int playerBombs){
     if( playerBombs > this->bombsSet){
         this->bombsSet++;
-        return 1;
+     return 1;
     }
     return 0;
 }

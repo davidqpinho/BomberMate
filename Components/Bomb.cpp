@@ -2,6 +2,7 @@
 
 Bomb::Bomb(int row, int column){
     
+    this->bombObserver = new BombObserver(* Stage::bombSubject);    
     this->sh = 80;
     this->sw = 100;
     this->bombCounter = 0;
@@ -22,11 +23,10 @@ Bomb::Bomb(int row, int column){
     this->DefineBlockPosition(row, column);       
     this->visitor = new BombVisitor(this);
     Stage::visitorlist.push_back(this->visitor); 
-    this->bombObserver = new BombObserver(* Stage::bombSubject);
 } 
   
 Bomb::~Bomb(){
-   this->bombObserver->RemoveMeFromTheList();
+   
    delete this->bombObserver; 
    Visitor::RemoveVisitor( Stage::visitorlist, (Visitor *)this->visitor);
 }
@@ -92,11 +92,12 @@ void Bomb::DrawExplosion(){
         } else if( this->explosionCounter < EXPLOSIONSTEP*4){
             DefinePosition(this->sx, this->sy, SHSHEET, SWSHEET, XOFFSET, YOFFSET, 4, 6);
             this->DrawExplodedPlace(this->row, this->column, this->sx, this->sy, this->sw, this->sh, 0, 0);
-        } else if( this->explosionCounter > EXPLOSIONSTEP*4){
+        } else if( this->explosionCounter > EXPLOSIONSTEP*4){            
             this->DrawFinalStep();
         }
 
     }else{    
+        this->bombObserver->RemoveMeFromTheList();
         this->state = VANISHED;
         this->removed = true;
     }
@@ -157,6 +158,7 @@ void Bomb::DrawExplosionLevel(int Level){
 }
 
 void Bomb::DrawExplosionEnd(float sxUp, float syUp, float sxDown, float syDown, float sxLeft, float syLeft, float sxRight, float syRight){
+    
     if(this->strength == 1){       
         
         this->DrawNotBlocked(4,0,8,8,this->row  - this->strength, this->column,sxUp,syUp,this->blockUpLv, 1);

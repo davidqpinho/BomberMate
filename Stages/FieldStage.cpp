@@ -55,13 +55,16 @@ bool FieldStage::CheckForForbidemSpots(int column, int row){
 }
 
 void FieldStage::LoadMobs( list<Component*>& componentList ) const {
-    Component * mob = new GuardDog(2,8);
-    if(!mob->sheet ) 
-    {
-       printf("Error loading Player Bitmap.");
-       exit(1);
-    }
-    componentList.push_back( mob);
+    //Component * mob = new GuardDog(2,8);
+    // if(!mob->sheet ) 
+    // {
+    //    printf("Error loading Player Bitmap.");
+    //    exit(1);
+    // }
+    componentList.push_back( new GuardDog(2,8));
+    componentList.push_back( new GuardDog(1,2));
+    componentList.push_back( new GuardDog(3,5));
+    componentList.push_back( new GuardDog(6,2));
 }
 
 void FieldStage::LoadPlayerOne( list<Component*>& componentList ) const {

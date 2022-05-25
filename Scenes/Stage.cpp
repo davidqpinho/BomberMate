@@ -61,9 +61,9 @@ vector<Visitor *> Stage::visitorlist;
        exit(1);
     }
 
+    selector->LoadMobs(this->componentList);
     selector->LoadStaticComponents(this->componentList);    
     selector->LoadDestructableComponents(this->componentList);
-    selector->LoadMobs(this->componentList);
     selector->LoadPlayerOne(this->componentList);
     
     
@@ -170,8 +170,7 @@ vector<Visitor *> Stage::visitorlist;
     if (al_key_down(&keyState, ALLEGRO_KEY_SPACE)){
         
       
-      if(this->bombSubject->CanSpawnBombs(1) == 0){
-        printf("\naqui");
+      if(this->bombSubject->CanSpawnBombs(1) == 1){
         Component * bomb = new Bomb(this->observer->GetLine(),this->observer->GetColumn());
         this->componentList.push_back(bomb);
       }
