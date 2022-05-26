@@ -54,7 +54,7 @@ class PlayerOneVisitor;
 class PlayerOne : public Component, public Movable {
  
  private:
-  int life = 3, bombStrength = 0, speed = 8;
+  int life = 0, bombStrength = 0, speed = 8;
   int initialRow, initialColumn;
   PlayerObserver * observer = NULL;
 

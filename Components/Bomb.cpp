@@ -26,7 +26,7 @@ Bomb::Bomb(int row, int column){
 } 
   
 Bomb::~Bomb(){
-   
+   this->bombObserver->RemoveMeFromTheList();
    delete this->bombObserver; 
    Visitor::RemoveVisitor( Stage::visitorlist, (Visitor *)this->visitor);
 }
@@ -97,7 +97,7 @@ void Bomb::DrawExplosion(){
         }
 
     }else{    
-        this->bombObserver->RemoveMeFromTheList();
+        this->bombObserver->RemoveMeFromTheList();        
         this->state = VANISHED;
         this->removed = true;
     }

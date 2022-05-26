@@ -46,6 +46,7 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
 }
 
 bool FieldStage::CheckForForbidemSpots(int column, int row){
+    //if(column==2 && row == 2) return true;
     if(column==4 && row == 4) return true;
     if(column==8 && row == 5) return true;
     if(column==8 && row == 6) return true;
@@ -61,10 +62,11 @@ void FieldStage::LoadMobs( list<Component*>& componentList ) const {
     //    printf("Error loading Player Bitmap.");
     //    exit(1);
     // }
-    componentList.push_back( new GuardDog(2,8));
-    componentList.push_back( new GuardDog(1,2));
-    componentList.push_back( new GuardDog(3,5));
-    componentList.push_back( new GuardDog(6,2));
+    vector<ComponentIndex> ramdomComponents;
+    ramdomComponents = StageSelector::GetRandomComponents(componentList, 4, CheckForForbidemSpots);
+    for(vector<ComponentIndex>::iterator ramdomComponentsIt = ramdomComponents.begin(); ramdomComponentsIt != ramdomComponents.end(); ramdomComponentsIt ++){
+         componentList.push_back(new GuardDog(ramdomComponentsIt->row,ramdomComponentsIt->column));
+     }
 }
 
 void FieldStage::LoadPlayerOne( list<Component*>& componentList ) const {
