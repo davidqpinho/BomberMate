@@ -215,7 +215,7 @@ void BombVisitor::VisitWall(const Wall *element) const{
         }
         
         if(this->SetBlockLevel(this->bomb->column, element->component->column, element->component->row, this->bomb->row , &this->bomb->blockDownLv)){
-            this->bomb->blockDown = (Wall *) element;
+            this->bomb->bottomWall = (Wall *) element;
         }        
 
         if(this->SetBlockLevel(this->bomb->row, element->component->row, this->bomb->column, element->component->column , &this->bomb->blockLeftLv)){
