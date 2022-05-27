@@ -98,17 +98,16 @@ vector<Visitor *> Stage::visitorlist;
   }
   
   void Stage::Run() {   
-
      
-     
+     al_clear_to_color(al_map_rgb(2, 116, 222));
      al_draw_bitmap(this->stageMap, HEADERSIZE, 0, 0);
      this->DrawComponentList();
-     float a = 1;
+
      /*Player status*/ 
      al_draw_bitmap_region(this->sheet1, 920, 680, 110, 92, 0, 0, 0);//life 88
      al_draw_bitmap_region(this->sheet1, 1570, 680, 110, 92, 0, 92, 0);//Str
-     al_draw_bitmap_region(this->sheet1, 1138.5, 680, 109, 92, 0, 184, 0);//Spd
-     al_draw_bitmap_region(this->sheet1, 1356, 680, 108, 92, 0, 276, 0);//NoB
+     al_draw_bitmap_region(this->sheet1, 1139, 680, 106, 92, 2, 184, 0);//Spd
+     al_draw_bitmap_region(this->sheet1, 1356, 680, 106, 92, 2, 276, 0);//NoB
      
      this->PrintStatus(ST_CL, ST_R1, this->observer->GetLife());
      this->PrintStatus(ST_CL, ST_R1 + 92, this->observer->GetSpeed());
