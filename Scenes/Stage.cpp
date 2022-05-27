@@ -103,12 +103,17 @@ vector<Visitor *> Stage::visitorlist;
      
      al_draw_bitmap(this->stageMap, HEADERSIZE, 0, 0);
      this->DrawComponentList();
-     
+     float a = 1;
      /*Player status*/ 
+     al_draw_bitmap_region(this->sheet1, 920, 680, 110, 92, 0, 0, 0);//life 88
+     al_draw_bitmap_region(this->sheet1, 1570, 680, 110, 92, 0, 92, 0);//Str
+     al_draw_bitmap_region(this->sheet1, 1138.5, 680, 109, 92, 0, 184, 0);//Spd
+     al_draw_bitmap_region(this->sheet1, 1356, 680, 108, 92, 0, 276, 0);//NoB
+     
      this->PrintStatus(ST_CL, ST_R1, this->observer->GetLife());
-     this->PrintStatus(ST_CL, ST_R1 + BLOCKHEIGHT, this->observer->GetBombStrength());
-     this->PrintStatus(ST_CL, ST_R1 + 2*BLOCKHEIGHT, this->observer->GetSpeed());
-     this->PrintStatus(ST_CL, ST_R1 + 3*BLOCKHEIGHT, this->observer->GetNOBombs());
+     this->PrintStatus(ST_CL, ST_R1 + 92, this->observer->GetSpeed());
+     this->PrintStatus(ST_CL, ST_R1 + 2*92, this->observer->GetNOBombs());
+     this->PrintStatus(ST_CL, ST_R1 + 3*92, this->observer->GetBombStrength());
 
   }
 
