@@ -49,13 +49,15 @@ class PlayerObserver : public IPlayerObserver {
 
   void Update( int event) override;
 
-  void SetStatus(int life, int bombStrength, int speed, int column, int line);
+  void SetStatus(int life, int bombStrength, int speed, int column, int line, int nOBombs);
 
   int  GetLife();
 
   int  GetBombStrength();
 
   int  GetSpeed();
+
+  int  GetNOBombs();
 
   int  GetLine();
 

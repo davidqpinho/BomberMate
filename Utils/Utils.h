@@ -7,8 +7,11 @@
 
     using namespace std;
 
-    int NewRandomNumber(vector<int> *permissibleValues);
+    int  NewRandomNumber(vector<int> *permissibleValues);
     void DefinePosition(float &sx, float &sy, float sh, float sw, float xOffset, float yOffset, int row, int column);
+    void itoa(int n, char s[]);
+    void reverse(char s[]);
+    int  strlen(char s[]);
     
     
 #endif

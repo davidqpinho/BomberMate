@@ -1,8 +1,12 @@
 #include "PlayerObserver.h"
 
-void PlayerObserver::SetStatus(int life, int bombStrength, int speed, int column, int line){
-    this->event = line + (column << 4) + (speed << 8) + ( bombStrength << 16 ) + (life << 20);
+void PlayerObserver::SetStatus(int life, int bombStrength, int speed, int column, int line, int nOBombs){
+    this->event = line + (column << 4) + (speed << 8) + ( bombStrength << 16 ) + (life << 20) + (nOBombs << 24);
     this->subject_.Notify(this->event);
+}
+
+int  PlayerObserver::GetNOBombs(){    
+    return (this->event & 251658240) >> 24;
 }
 
 int  PlayerObserver::GetLife(){    

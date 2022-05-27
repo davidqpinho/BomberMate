@@ -98,10 +98,26 @@ vector<Visitor *> Stage::visitorlist;
   }
   
   void Stage::Run() {   
-      
+
+     
+     
      al_draw_bitmap(this->stageMap, HEADERSIZE, 0, 0);
      this->DrawComponentList();
+     
+     /*Player status*/ 
+     this->PrintStatus(ST_CL, ST_R1, this->observer->GetLife());
+     this->PrintStatus(ST_CL, ST_R1 + BLOCKHEIGHT, this->observer->GetBombStrength());
+     this->PrintStatus(ST_CL, ST_R1 + 2*BLOCKHEIGHT, this->observer->GetSpeed());
+     this->PrintStatus(ST_CL, ST_R1 + 3*BLOCKHEIGHT, this->observer->GetNOBombs());
 
+  }
+
+  void Stage::PrintStatus(float x, float y, int value){
+    
+    char buffer [33];
+    
+    itoa (value,buffer);
+    al_draw_text(this->stageFont, STATUS_COLOR, x, y, 0,  buffer);
   }
 
   int Stage::Handle(){
@@ -195,12 +211,6 @@ vector<Visitor *> Stage::visitorlist;
     
     this->ProcessVisitors();
     this->ProcessMovements();
-    // printf("\nlife: %d",this->observer->GetLife());
-    // printf("\nLine: %d",this->observer->GetLine());
-    // printf("\nColumn: %d",this->observer->GetColumn());
-    // printf("\nSpeed: %d",this->observer->GetSpeed());
-    // printf("\nBombStrength: %d",this->observer->GetBombStrength());
-    // printf("\nevent: %d",this->observer->GetEvent());
     
     return true;
   }

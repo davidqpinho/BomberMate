@@ -2,6 +2,7 @@
 #define __STAGE_H_
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <memory>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
@@ -24,6 +25,10 @@
 
 #define STAGE_RUNNING     0
 #define STAGE_GAME_OVER   1
+#define STATUS_COLOR      al_map_rgb(255, 171, 0)
+#define ST_CL             75
+#define ST_R1             50
+#define SCORE "SCORE"
 
 
 using namespace std;
@@ -39,7 +44,7 @@ using namespace std;
     PlayerObserver * observer = NULL;
     
     int testeCounter = 150;
-    
+    void PrintStatus(float x, float y, int value);
     void ProcessVisitors();
     void ProcessMovements();
     void DrawComponentList();

@@ -46,7 +46,7 @@
 #define P_ONE_D_S2_SY  98
 #define P_ONE_D_S3_SX  430
 #define P_ONE_D_S3_SY  98
-#define UpdatePlayerStatus  this->observer->SetStatus(this->life, this->bombStrength, this->speed, this->column, this->row)
+#define UpdatePlayerStatus  this->observer->SetStatus(this->life, this->bombStrength, this->speed, this->column, this->row, this->nOBombs)
 
 
 class PlayerOneVisitor;
@@ -54,7 +54,7 @@ class PlayerOneVisitor;
 class PlayerOne : public Component, public Movable {
  
  private:
-  int life = 0, bombStrength = 0, speed = 8;
+  int life = 0, bombStrength = 0, speed = 8, nOBombs = 1;
   int initialRow, initialColumn;
   PlayerObserver * observer = NULL;
 
