@@ -36,17 +36,17 @@
 #define LIFE_SW           110
 #define LIFE_SH           92
 
-#define STRG_SX           1570
+#define SPD_SX            1570//
+#define SPD_SY            680//
+#define SPD_SW            110//
+#define SPD_SH            92//
+
+#define STRG_SX           1356
 #define STRG_SY           680
-#define STRG_SW           110
+#define STRG_SW           106
 #define STRG_SH           92
 
-#define SPD_SX            1139
-#define SPD_SY            680
-#define SPD_SW            106
-#define SPD_SH            92
-
-#define NOBS_SX           1356
+#define NOBS_SX           1139
 #define NOBS_SY           680
 #define NOBS_SW           106
 #define NOBS_SH           92

@@ -11,8 +11,8 @@
 #include "../Components/PlayerOne.h"
 
 #define LIFE    1
-#define STRG    2
-#define SPD     3
+#define SPD     2
+#define STRG    3
 #define NOBS    4
 
 class ConsumableItemVisitor;
