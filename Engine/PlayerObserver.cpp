@@ -18,7 +18,7 @@ int  PlayerObserver::GetBombStrength(){
 }
 
 int  PlayerObserver::GetSpeed(){    
-    return (this->event & 95280) >> 8;
+    return (this->event & 65280) >> 8;
 }
 
 int  PlayerObserver::GetLine(){
