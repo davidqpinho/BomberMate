@@ -74,6 +74,7 @@ class GuardDogVisitor : public Visitor {
  public:  
   GuardDogVisitor(GuardDog * guardDog);
   void VisitPlayerOne(const PlayerOne *player) const override {};
+  void VisitConsumableItem(const ConsumableItem * element) const override {};
   void VisitBomb(const Bomb * element) const override;
   void VisitWall(const Wall *element) const override;
   void VisitMob(const Mob *element) const override;

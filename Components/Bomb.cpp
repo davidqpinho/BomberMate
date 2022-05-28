@@ -1,13 +1,13 @@
 #include "Bomb.h"
 
-Bomb::Bomb(int row, int column){
+Bomb::Bomb(int row, int column, int bombStrenght){
     
     this->bombObserver = new BombObserver(* Stage::bombSubject);    
     this->sh = 80;
     this->sw = 100;
     this->bombCounter = 0;
     this->state = BURNING;
-    this->strength = 2;
+    this->strength = bombStrenght;
     this->blockUpLv = this->strength; 
     this->blockDownLv = this->strength;
     this->blockRightLv = this->strength;

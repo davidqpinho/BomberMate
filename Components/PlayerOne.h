@@ -54,18 +54,20 @@ class PlayerOneVisitor;
 class PlayerOne : public Component, public Movable {
  
  private:
-  int life = 0, bombStrength = 0, speed = 8, nOBombs = 1;
+  
   int initialRow, initialColumn;
   PlayerObserver * observer = NULL;
 
  public:
-  
-  MovementContext *movementStateMachine;
-  
+  int life = 0, bombStrength = 1, speed = 8, nOBombs = 1;
+  MovementContext *movementStateMachine;  
   PlayerOneVisitor * visitor;
   PlayerOne(int row, int column) ; 
   ~PlayerOne();
-
+  void AddLife();
+  void AddBombStrenhth();
+  void AddSpeed();
+  void AddNoOfBombs();
   void Colide() override;
   void Move() override;
   void Draw() override;
@@ -79,6 +81,7 @@ class PlayerOneVisitor : public Visitor {
  public:
   PlayerOneVisitor(PlayerOne * player);
   void VisitPlayerOne(const PlayerOne *player) const override {};
+  void VisitConsumableItem(const ConsumableItem * element) const override {};
   void VisitBomb(const Bomb * element) const override;
   void VisitWall(const Wall *element) const override;
   void VisitMob(const Mob *element) const override;

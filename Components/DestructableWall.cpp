@@ -1,9 +1,10 @@
 #include "DestructableWall.h"
 
-DestructableWall::DestructableWall(int DestructableWall, int row, int column): Wall(this){
+DestructableWall::DestructableWall(int DestructableWall, int row, int column, int consumable): Wall(this){
     
    this->WallType = DestructableWall;
-     
+   this->consumable = consumable;
+   
    switch(DestructableWall){
        case BRICKWALL:
         this->sx = BRICKWALL_SX;

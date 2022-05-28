@@ -11,6 +11,7 @@
     class Mob;    
     class Visitor;
     class Bomb;
+    class ConsumableItem;
 
     class VisitorComponent {
     public:
@@ -24,7 +25,8 @@
         virtual void VisitPlayerOne(const PlayerOne *player) const = 0;  
         virtual void VisitWall(const Wall *element) const = 0;  
         virtual void VisitMob(const Mob *element) const = 0; 
-        virtual void VisitBomb(const Bomb *elemens) const = 0;   
+        virtual void VisitBomb(const Bomb *elemens) const = 0;
+        virtual void VisitConsumableItem(const ConsumableItem *elemens) const = 0;   
         
         static void  RemoveVisitor(vector<Visitor *> &visitorList, Visitor * visitor){
         

@@ -64,8 +64,7 @@ vector<Visitor *> Stage::visitorlist;
     selector->LoadStaticComponents(this->componentList);    
     selector->LoadMobs(this->componentList);
     selector->LoadDestructableComponents(this->componentList);
-    selector->LoadPlayerOne(this->componentList);
-    
+    selector->LoadPlayerOne(this->componentList);    
     
     delete selector;
   }
@@ -104,10 +103,10 @@ vector<Visitor *> Stage::visitorlist;
      this->DrawComponentList();
 
      /*Player status*/ 
-     al_draw_bitmap_region(this->sheet1, 920, 680, 110, 92, 0, 0, 0);//life 88
-     al_draw_bitmap_region(this->sheet1, 1570, 680, 110, 92, 0, 92, 0);//Str
-     al_draw_bitmap_region(this->sheet1, 1139, 680, 106, 92, 2, 184, 0);//Spd
-     al_draw_bitmap_region(this->sheet1, 1356, 680, 106, 92, 2, 276, 0);//NoB
+     al_draw_bitmap_region(this->sheet1, LIFE_SX, LIFE_SY, LIFE_SW, LIFE_SH, 0, 0, 0);//life 88
+     al_draw_bitmap_region(this->sheet1, STRG_SX, STRG_SY, STRG_SW, STRG_SH, 0, 92, 0);//Str
+     al_draw_bitmap_region(this->sheet1, SPD_SX, SPD_SY, SPD_SW, SPD_SH, 2, 184, 0);//Spd
+     al_draw_bitmap_region(this->sheet1, NOBS_SX, NOBS_SY, NOBS_SW, NOBS_SH, 2, 276, 0);//NoB
      
      this->PrintStatus(ST_CL, ST_R1, this->observer->GetLife());
      this->PrintStatus(ST_CL, ST_R1 + 92, this->observer->GetSpeed());
@@ -165,6 +164,14 @@ vector<Visitor *> Stage::visitorlist;
     while (it != this->componentList.end())
     {
       if((*it)->removed){
+          if((*it)->consumable > -1){
+            this->componentList.push_back(new ConsumableItem(
+              (*it)->consumable, 
+              (*it)->row,
+              (*it)->column
+              ));
+          }
+
           it = this->componentList.erase(it);
         }else{
           (*it)->Move();
@@ -191,7 +198,11 @@ vector<Visitor *> Stage::visitorlist;
         
       
       if(this->bombSubject->CanSpawnBombs(1) == 1){
-        Component * bomb = new Bomb(this->observer->GetLine(),this->observer->GetColumn());
+        Component * bomb = new Bomb(
+          this->observer->GetLine(),
+          this->observer->GetColumn(),
+          this->observer->GetBombStrength()
+        );
         this->componentList.push_back(bomb);
       }
     }

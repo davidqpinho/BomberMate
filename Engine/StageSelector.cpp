@@ -19,11 +19,11 @@ void  StageSelector::BuildStaticComponents( list<Component*>& componentList, boo
         for(int row = 0; row < MAXROWNUMBER; row++){ 
         for(int column = 0; column < MAXCOLUMNNUMBER; column++){ 
             if( row == 0 || row == MAXROWNUMBER-1){                
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row));
+                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
             }else if( (column == 0 || column == MAXCOLUMNNUMBER - 1 ) && (row > 0 && row < MAXROWNUMBER-1)){
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row));
+                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
             }else if( checkSpots(column, row) && (row > 0 && row < MAXROWNUMBER-1) && (column > 0 && column < MAXCOLUMNNUMBER-1)){
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row));
+                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
             }
         }
         
@@ -31,7 +31,7 @@ void  StageSelector::BuildStaticComponents( list<Component*>& componentList, boo
 }
 
 
-Component * StageSelector::ComponentFactory(int componentIndex, int column, int row){
+Component * StageSelector::ComponentFactory(int componentIndex, int column, int row, int consumable){
        
      Component * component = NULL;
      
@@ -40,10 +40,9 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
              component = new StaticComponent(componentIndex, row, column);              
              break; 
              case BRICKWALL: 
-             component = new DestructableWall(componentIndex, row, column);                
+             component = new DestructableWall(componentIndex, row, column, consumable);                
              break;
      }
-     
      return component; 
 }
 

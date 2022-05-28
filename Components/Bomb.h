@@ -52,7 +52,7 @@ class Bomb : public Component{
   bool rangeDefined = false;
   Wall * upWall, * bottomWall, * leftWall, * rigthWall;
   BombVisitor * visitor;
-  Bomb(int row, int column); 
+  Bomb(int row, int column, int bombStrenght); 
   ~Bomb();
 
   vector<ExplodedPosition> explodedPlaces;
@@ -81,6 +81,7 @@ class BombVisitor : public Visitor {
   void VisitWall(const Wall *element) const override;
   void VisitMob(const Mob *element) const override {};
   void VisitBomb(const Bomb * element) const override {};
+  void VisitConsumableItem(const ConsumableItem * element) const override {};
   void ProcessVisitor(Component * Component) const; 
   bool SetBlockLevel(int bombEqualDirection, int wallEqualDirection, int higherLevel, int lowerLevel, int * level) const;
 };

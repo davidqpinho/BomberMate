@@ -31,7 +31,7 @@ class DestructableWall : public Component, public Wall {
 
  public:
   
-  DestructableWall(int DestructableWall, int row, int column); 
+  DestructableWall(int DestructableWall, int row, int column, int consumable); 
   ~DestructableWall();
   
   void SetDestructionState(int step);

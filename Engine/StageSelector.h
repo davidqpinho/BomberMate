@@ -27,7 +27,7 @@ class StageSelector{
  public:
    int staticComponent, destructableWall;
    static StageSelector * StageFactory(int StageIndex);   
-   static Component * ComponentFactory(int componentIndex, int column, int row); 
+   static Component * ComponentFactory(int componentIndex, int column, int row, int consumable); 
    static vector<ComponentIndex> GetRandomComponents(list<Component*>& componentList, int noOfSpawnedComponents, bool (*forbidenSpots)(int, int));
    static bool  ValidateRandomNumber(vector<ComponentIndex>& randomList, int randomNumber);
    static void  BuildStaticComponents( list<Component*>& componentList, bool (*checkSpots)(int, int), int staticComponent );

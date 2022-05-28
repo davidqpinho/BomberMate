@@ -96,6 +96,26 @@ void PlayerOneVisitor::VisitBomb(const Bomb * element) const {
     }
 }
 
+void PlayerOne::AddLife(){
+    if(this->life < 3)
+        this->life ++;
+}
+
+void PlayerOne::AddBombStrenhth(){
+    if(this->bombStrength < 3)
+        this->bombStrength ++;
+}
+
+void PlayerOne::AddSpeed(){
+    if(this->speed < 3)
+        this->speed ++;
+}
+
+void PlayerOne::AddNoOfBombs(){
+    if(this->nOBombs < 3)
+        this->nOBombs ++;
+}
+
   
 PlayerOne::~PlayerOne(){
     

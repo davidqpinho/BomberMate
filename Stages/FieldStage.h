@@ -9,6 +9,7 @@
 #include "../Components/DestructableWall.h"
 #include "../Components/PlayerOne.h"
 #include "../Components/GuardDog.h"
+#include "../Components/ConsumableItem.h"
 
 using namespace std;
 class FieldStage : public StageSelector  {

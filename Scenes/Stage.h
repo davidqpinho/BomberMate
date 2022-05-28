@@ -20,6 +20,7 @@
 #include "../Engine/EventsObserver.h"
 #include "../Engine/MovementState.h"
 #include "../Components/Bomb.h"
+#include "../Components/ConsumableItem.h"
 #include "../Engine/PlayerObserver.h"
 #include "../Engine/BombTracker.h"
 
@@ -29,6 +30,26 @@
 #define ST_CL             75
 #define ST_R1             50
 #define SCORE "SCORE"
+
+#define LIFE_SX           920
+#define LIFE_SY           680
+#define LIFE_SW           110
+#define LIFE_SH           92
+
+#define STRG_SX           1570
+#define STRG_SY           680
+#define STRG_SW           110
+#define STRG_SH           92
+
+#define SPD_SX            1139
+#define SPD_SY            680
+#define SPD_SW            106
+#define SPD_SH            92
+
+#define NOBS_SX           1356
+#define NOBS_SY           680
+#define NOBS_SW           106
+#define NOBS_SH           92
 
 
 using namespace std;
@@ -68,8 +89,6 @@ using namespace std;
     bool CheckStaticSpots(int Column, int Row); 
     static void GetSheet(Component * component, int sheet);
 
-  };
-
-  
+  };  
 
 #endif
