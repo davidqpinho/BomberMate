@@ -69,7 +69,12 @@ void GuardDogVisitor::VisitBomb(const Bomb * element) const {
     
     if( this->guardDog->movementStateMachine->state != DYING  && 
         this->guardDog->movementStateMachine->state != ERASED &&        
-        element->CheckIfHit(this->guardDog->row, this->guardDog->column)){
+        element->CheckIfHit(  
+            this->guardDog->dy - (this->guardDog->sh)/2,
+            this->guardDog->dy + (this->guardDog->sh)/2,
+            this->guardDog->dx - (this->guardDog->sw)/2,
+            this->guardDog->dx + (this->guardDog->sw)/2)
+        ){
         this->guardDog->movementStateMachine->Request(DEAD);
     }else{
         this->guardDog->blockDown |= this->guardDog->BlockRow(element->row - 1, element->column );//blockleft

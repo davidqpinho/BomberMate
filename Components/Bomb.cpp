@@ -68,11 +68,6 @@ void Bomb::Draw() {
     }else{
         al_draw_bitmap_region((*this->sheet), this->sx, this->sy, this->sw, this->sh, this->dx, this->dy, 0);
     }
-    /*
-    if(this->state==VANISHED){
-        al_draw_bitmap_region((*this->sheet), this->sx, this->sy, this->sw, this->sh, this->dx, this->dy, 0);
-         this->DrawExplosionLevel(1);
-    }*/
     
 }
 
@@ -115,15 +110,6 @@ void Bomb::DrawExplodedPlace(int row, int column, int sx, int sy, int sw, int sh
 
     int dx, dy;
     vector<ExplodedPosition>::iterator it;
-    
-    /*for( it = this->explodedPlaces.begin(); it != this->explodedPlaces.end(); it++){
-        if((*it).row == row && (*it).column == column) break;
-    }
-
-    if(it == this->explodedPlaces.end()){
-        ExplodedPosition pressedButtom = {.row = row, .column = column};
-        this->explodedPlaces.push_back(pressedButtom);
-    }*/
 
     dy = (row * BLOCKHEIGHT) + ((BLOCKHEIGHT - this->sh)/2) + fineY;
     dx = (column * BLOCKWIDTH  + HEADERSIZE) + ((BLOCKWIDTH - this->sw)/2)+fineX; 
@@ -194,15 +180,27 @@ BombVisitor::BombVisitor(Bomb * bomb){
     this->bomb = bomb;
 }
 
-bool Bomb::CheckIfHit(int row, int column) const {
-       
+bool Bomb::CheckIfHit(float by, float ey, float bx, float ex) const {
+    
+    float hsh = BLOCKHEIGHT/2;
+    float hsw = BLOCKWIDTH/2;
+    
+    float bottomCross  = ((Component *)this)->GetY(this->row + this->blockDownLv) + hsh;
+    float topCross     = ((Component *)this)->GetY((this->row - this->blockUpLv)) - hsh;
+
+    float rightCross   = ((Component *)this)->GetX(this->column + this->blockRightLv) + hsw;
+    float leftCross    = ((Component *)this)->GetX(this->column - this->blockLeftLv) - hsw;
+
+    float centerLeft   = ((Component *)this)->GetX(this->column) - hsw;
+    float centerRight  = ((Component *)this)->GetX(this->column) + hsw;
+
+    float centerTop    = ((Component *)this)->GetY((this->row)) - hsh;
+    float centerBottom = ((Component *)this)->GetY((this->row)) + hsh;
+
     if((this->rangeDefined ) && 
-    ((column == this->column && 
-      row <= (this->row + this->blockDownLv) && 
-      row >= (this->row - this->blockUpLv)) ||
-    (row == this->row && 
-     column <= (this->column + this->blockRightLv) && 
-     column >= (this->column - this->blockLeftLv)))
+    ( (by <= bottomCross && ey >= topCross && bx >= centerLeft && ex <= centerRight) ||
+      (bx >= leftCross   && ex <= rightCross && by >= centerTop && ey <= centerBottom)
+    )
     ){
        return true;
     }

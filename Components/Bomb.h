@@ -66,7 +66,7 @@ class Bomb : public Component{
   void DrawExplosionLevel(int Level);
   void DrawExplosionEnd(float sxUp, float syUp, float sxDown, float syDown, float sxLeft, float syLeft, float sxRight, float syRight);
   void DrawNotBlocked(int shrow, int shcolumn, int fineX, int fineY, int row_, int column_, float sx_, float sy_, int blockedLv, int ExplosionLv);
-  bool CheckIfHit(int row, int column) const;
+  bool CheckIfHit(float by, float ey, float bx, float ex) const;
   
 };
 

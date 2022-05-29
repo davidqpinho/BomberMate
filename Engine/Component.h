@@ -41,7 +41,9 @@ class Component: public VisitorComponent {
   bool BlockRow(int visitorRow, int visitorColumn);
   bool BlockColumn(int visitorColumn, int visitorRow);
   void SetRow(int row);
-  void SetColumn(int column); 
+  void SetColumn(int column);
+  float GetX(int column);
+  float GetY(int row);
   
 };
 
