@@ -107,8 +107,12 @@ void PlayerOne::AddBombStrenhth(){
 }
 
 void PlayerOne::AddSpeed(){
-    if(this->speed < 3)
-        this->speed ++;
+   if(this->speed < MAXIMUMSPEED)
+   {
+         this->speed += 2;
+         this->movementStateMachine->speed +=4;
+   }
+
 }
 
 void PlayerOne::AddNoOfBombs(){

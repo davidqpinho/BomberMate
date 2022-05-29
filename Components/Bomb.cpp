@@ -197,8 +197,12 @@ BombVisitor::BombVisitor(Bomb * bomb){
 bool Bomb::CheckIfHit(int row, int column) const {
        
     if((this->rangeDefined ) && 
-    ((column == this->column && row <= (this->row + this->blockDownLv) && row >= (this->row - this->blockUpLv)) ||
-    (row == this->row && column <= (this->column + this->blockRightLv) && column >= (this->column - this->blockLeftLv)))
+    ((column == this->column && 
+      row <= (this->row + this->blockDownLv) && 
+      row >= (this->row - this->blockUpLv)) ||
+    (row == this->row && 
+     column <= (this->column + this->blockRightLv) && 
+     column >= (this->column - this->blockLeftLv)))
     ){
        return true;
     }

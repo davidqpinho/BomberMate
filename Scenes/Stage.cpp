@@ -197,7 +197,7 @@ vector<Visitor *> Stage::visitorlist;
     if (al_key_down(&keyState, ALLEGRO_KEY_SPACE)){
         
       
-      if(this->bombSubject->CanSpawnBombs(1) == 1){
+      if(this->bombSubject->CanSpawnBombs(this->observer->GetNOBombs()) == 1){
         Component * bomb = new Bomb(
           this->observer->GetLine(),
           this->observer->GetColumn(),
@@ -226,6 +226,7 @@ vector<Visitor *> Stage::visitorlist;
     
     this->ProcessVisitors();
     this->ProcessMovements();
+    this->bombSubject->UpdateTimer();
     
     return true;
   }

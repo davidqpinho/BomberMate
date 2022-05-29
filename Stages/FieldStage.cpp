@@ -36,7 +36,7 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
 
      vector<ComponentIndex> ramdomComponents;
      //componentList.push_back(new ConsumableItem(LIFE, 6,7));
-     componentList.push_back(StageSelector::ComponentFactory(BRICKWALL,6,6, NOBS));
+     componentList.push_back(StageSelector::ComponentFactory(BRICKWALL,6,6, SPD));
      ramdomComponents = StageSelector::GetRandomComponents(componentList, 15, CheckForForbidemSpots);
      int counter = 0;
      

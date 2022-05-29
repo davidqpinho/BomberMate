@@ -18,7 +18,8 @@ int  PlayerObserver::GetBombStrength(){
 }
 
 int  PlayerObserver::GetSpeed(){    
-    return (this->event & 65280) >> 8;
+    int realSpeed = (this->event & 65280) >> 8;
+    return (realSpeed - 8)/2;
 }
 
 int  PlayerObserver::GetLine(){

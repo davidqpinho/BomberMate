@@ -44,12 +44,15 @@ class BombSubject : public IBombSubject {
 
   int CanSpawnBombs(int playerBombs);
 
+  void UpdateTimer();
+
   int bombsSet = 0;
+  
 
  private:
 
   list<IBombObserver *> list_observer_;
-  
+  int bombTimer = 0;
 };
 
 class BombObserver : public IBombObserver {

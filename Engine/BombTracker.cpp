@@ -75,11 +75,17 @@ void BombSubject::CreateEvent(int event) {
 }   
 
 int BombSubject::CanSpawnBombs(int playerBombs){
-    if( playerBombs > this->bombsSet){
+    if( this->bombTimer == 0 && playerBombs > this->bombsSet){
+        this->bombTimer = 20;
         this->bombsSet++;
      return 1;
     }
     return 0;
+}
+
+void BombSubject::UpdateTimer(){
+    if(this->bombTimer > 0)
+        this->bombTimer --;
 }
 
 BombSubject::~BombSubject(){
