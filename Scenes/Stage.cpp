@@ -237,6 +237,25 @@ vector<Visitor *> Stage::visitorlist;
     
         for (it = this->componentList.begin(); it != this->componentList.end(); ++it){
           (*it)->Draw();
+          //this->DrawTestRectangle((*it)->dy, (*it)->dx, (*it)->sh, (*it)->sw);
         }
       
   } 
+
+  void Stage::DrawTestRectangle(float dy,float dx,float sh,float sw){
+    float by = dy;
+    float ey = dy + sh;
+    float bx = dx;
+    float ex = dx + sw;
+    for(float i=0;i<=5; i+=0.1){
+      al_draw_pixel(bx, by+i, al_map_rgb(255, 0, 0));
+      al_draw_pixel(bx+i, by, al_map_rgb(255, 0, 0));
+      al_draw_pixel(ex-i, by, al_map_rgb(255, 0, 0));
+      al_draw_pixel(ex, by+i, al_map_rgb(255, 0, 0));
+      al_draw_pixel(bx+i, ey, al_map_rgb(255, 0, 0));
+      al_draw_pixel(bx, ey-i, al_map_rgb(255, 0, 0));
+      al_draw_pixel(ex, ey-i, al_map_rgb(255, 0, 0));
+      al_draw_pixel(ex-i, ey, al_map_rgb(255, 0, 0));
+    }
+  }
+  

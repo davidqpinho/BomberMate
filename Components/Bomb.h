@@ -28,7 +28,7 @@
 #define BURNING             0
 #define EXPLODED            1
 #define VANISHED            2
-#define EXPLOSIONEND        23
+#define EXPLOSIONEND        30
 #define EXPLOSIONSTEP       3
 #define EXPFINALSTEP        12
 

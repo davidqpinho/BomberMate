@@ -86,10 +86,10 @@ void PlayerOneVisitor::VisitBomb(const Bomb * element) const {
     if( this->player->movementStateMachine->state != DYING  && 
         this->player->movementStateMachine->state != ERASED &&        
         element->CheckIfHit(
-            this->player->dy - (this->player->sh)/2,
-            this->player->dy + (this->player->sh)/2,
-            this->player->dx - (this->player->sw)/2,
-            this->player->dx + (this->player->sw)/2)
+            this->player->dy,
+            this->player->dy + (this->player->sh),
+            this->player->dx,
+            this->player->dx + (this->player->sw))
         ){
         this->player->movementStateMachine->state = DYING;        
         Stage::eventsObserver->Update(DEAD);

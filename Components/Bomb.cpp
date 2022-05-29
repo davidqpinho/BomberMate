@@ -182,26 +182,25 @@ BombVisitor::BombVisitor(Bomb * bomb){
 
 bool Bomb::CheckIfHit(float by, float ey, float bx, float ex) const {
     
-    float hsh = BLOCKHEIGHT/2;
-    float hsw = BLOCKWIDTH/2;
+    float hsh = BLOCKHEIGHT;
+    float hsw = BLOCKWIDTH;
     
     float bottomCross  = ((Component *)this)->GetY(this->row + this->blockDownLv) + hsh;
-    float topCross     = ((Component *)this)->GetY((this->row - this->blockUpLv)) - hsh;
+    float topCross     = ((Component *)this)->GetY((this->row - this->blockUpLv));
 
     float rightCross   = ((Component *)this)->GetX(this->column + this->blockRightLv) + hsw;
-    float leftCross    = ((Component *)this)->GetX(this->column - this->blockLeftLv) - hsw;
+    float leftCross    = ((Component *)this)->GetX(this->column - this->blockLeftLv);
 
-    float centerLeft   = ((Component *)this)->GetX(this->column) - hsw;
+    float centerLeft   = ((Component *)this)->GetX(this->column);
     float centerRight  = ((Component *)this)->GetX(this->column) + hsw;
 
-    float centerTop    = ((Component *)this)->GetY((this->row)) - hsh;
+    float centerTop    = ((Component *)this)->GetY((this->row));
     float centerBottom = ((Component *)this)->GetY((this->row)) + hsh;
 
     if((this->rangeDefined ) && 
-    ( (by <= bottomCross && ey >= topCross && bx >= centerLeft && ex <= centerRight) ||
-      (bx >= leftCross   && ex <= rightCross && by >= centerTop && ey <= centerBottom)
-    )
-    ){
+    ( (by <= bottomCross && ey >= topCross   && bx >= centerLeft && ex <= centerRight) ||
+      (bx >= leftCross   && ex <= rightCross && by >= centerTop  && ey <= centerBottom))
+    ){    
        return true;
     }
        
@@ -247,4 +246,3 @@ bool BombVisitor::SetBlockLevel(int bombEqualDirection, int wallEqualDirection, 
 
     return false;
 }
-

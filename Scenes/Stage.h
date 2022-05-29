@@ -88,7 +88,7 @@ using namespace std;
     int  ProcessEvent(ALLEGRO_EVENT ** event) override; 
     bool CheckStaticSpots(int Column, int Row); 
     static void GetSheet(Component * component, int sheet);
-
+    void DrawTestRectangle(float dy,float dx,float sh,float sw);
   };  
 
 #endif
