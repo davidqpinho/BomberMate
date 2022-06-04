@@ -67,8 +67,8 @@ bool FieldStage::CheckForForbidemSpots(int column, int row){
 }
 
 void FieldStage::LoadMobs( list<Component*>& componentList ) const {
-
-    vector<ComponentIndex> ramdomComponents;
+    componentList.push_back(StageSelector::ComponentFactory(OCTOPUS,4,4, -1));
+    /*vector<ComponentIndex> ramdomComponents;
     int count = 0, mob;
     
     ramdomComponents = StageSelector::GetRandomComponents(componentList, 4, CheckForForbidemSpots);
@@ -80,7 +80,7 @@ void FieldStage::LoadMobs( list<Component*>& componentList ) const {
         componentList.push_back(
              StageSelector::ComponentFactory(mob,ramdomComponentsIt->column,ramdomComponentsIt->row, -1)
         );
-     }
+     }*/
 }
 
 void FieldStage::LoadPlayerOne( list<Component*>& componentList ) const {

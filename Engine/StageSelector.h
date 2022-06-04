@@ -12,6 +12,8 @@
 #include "../Engine/Component.h"
 #include "../Components/Butterfly.h"
 #include "../Components/GuardDog.h"
+#include "../Components/JellyGirl.h"
+#include "../Components/Octopus.h"
 
 #define MAXROWNUMBER          8
 #define MAXCOLUMNNUMBER       10

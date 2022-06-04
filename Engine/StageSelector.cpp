@@ -47,6 +47,11 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
         break;
         case BUTTERFLY:
         component = new Butterfly(row, column);
+        case JELLYGIRL:
+        component = new JellyGirl(row, column);
+        break;
+        case OCTOPUS:
+        component = new Octopus(row, column);
         break;
      }
      return component; 

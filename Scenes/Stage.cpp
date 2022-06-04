@@ -63,7 +63,7 @@ vector<Visitor *> Stage::visitorlist;
 
     selector->LoadStaticComponents(this->componentList);    
     selector->LoadMobs(this->componentList);
-    selector->LoadDestructableComponents(this->componentList);
+    //selector->LoadDestructableComponents(this->componentList);
     selector->LoadPlayerOne(this->componentList);    
     
     delete selector;
