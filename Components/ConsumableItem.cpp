@@ -4,6 +4,7 @@ ConsumableItem::ConsumableItem(int ConsumableItem, int row, int column){
     
    this->ItemType = ConsumableItem;
    Stage::GetSheet(this, 1);  
+   this->zpos = 0;
    switch(ConsumableItem){
        case LIFE:
         this->sx = LIFE_SX;

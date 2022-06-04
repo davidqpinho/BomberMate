@@ -14,8 +14,8 @@ class Component: public VisitorComponent {
   
  public:
   ALLEGRO_BITMAP ** sheet = NULL;
-  bool blockUp=false, blockDown=false, blockLeft=false, blockRight=false;  
-  int  consumable = -1;
+  bool blockUp=false, blockDown=false, blockLeft=false, blockRight=false;
+  int zpos = 1, consumable = -1;
 
   int fStSx_, fStSy_, fLpSx_, fLpSy_, fRpSx_, fRpSy_, 
       bStSx_, bStSy_, bRpSx_, bRpSy_, bLpSx_, bLpSy_, 

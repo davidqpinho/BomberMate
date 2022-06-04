@@ -15,6 +15,9 @@
     //Components
     #define BRICK       0
     #define BRICKWALL   1
-    
+    #define GUARDDOG    2
+    #define BUTTERFLY   3
+    #define OCTOPUS     4
+    #define JELLYGIRL   5
     
 #endif

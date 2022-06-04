@@ -10,6 +10,8 @@
 #include <ctime>
 #include "../Assets/assets.h"
 #include "../Engine/Component.h"
+#include "../Components/Butterfly.h"
+#include "../Components/GuardDog.h"
 
 #define MAXROWNUMBER          8
 #define MAXCOLUMNNUMBER       10

@@ -69,11 +69,17 @@ bool FieldStage::CheckForForbidemSpots(int column, int row){
 void FieldStage::LoadMobs( list<Component*>& componentList ) const {
 
     vector<ComponentIndex> ramdomComponents;
-
+    int count = 0, mob;
+    
     ramdomComponents = StageSelector::GetRandomComponents(componentList, 4, CheckForForbidemSpots);
-
-    for(vector<ComponentIndex>::iterator ramdomComponentsIt = ramdomComponents.begin(); ramdomComponentsIt != ramdomComponents.end(); ramdomComponentsIt ++){
-         componentList.push_back(new GuardDog(ramdomComponentsIt->row,ramdomComponentsIt->column));
+    
+    for(vector<ComponentIndex>::iterator ramdomComponentsIt = ramdomComponents.begin(); ramdomComponentsIt != ramdomComponents.end(); ramdomComponentsIt ++, count++){
+    
+        mob = count%2 == 0 ? BUTTERFLY: GUARDDOG;
+    
+        componentList.push_back(
+             StageSelector::ComponentFactory(mob,ramdomComponentsIt->column,ramdomComponentsIt->row, -1)
+        );
      }
 }
 

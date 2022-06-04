@@ -36,12 +36,18 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
      Component * component = NULL;
      
      switch (componentIndex){
-             case BRICK:                 
-             component = new StaticComponent(componentIndex, row, column);              
-             break; 
-             case BRICKWALL: 
-             component = new DestructableWall(componentIndex, row, column, consumable);                
-             break;
+        case BRICK:                 
+        component = new StaticComponent(componentIndex, row, column);              
+        break; 
+        case BRICKWALL: 
+        component = new DestructableWall(componentIndex, row, column, consumable);                
+        break;
+        case GUARDDOG:
+        component = new GuardDog(row, column);
+        break;
+        case BUTTERFLY:
+        component = new Butterfly(row, column);
+        break;
      }
      return component; 
 }

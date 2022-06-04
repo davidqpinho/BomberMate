@@ -234,6 +234,7 @@ vector<Visitor *> Stage::visitorlist;
   void Stage::DrawComponentList(){
 
     list<Component*>::iterator it;
+    this->componentList.sort([](const Component * f, const Component * s) { return f->zpos < s->zpos; });
     
         for (it = this->componentList.begin(); it != this->componentList.end(); ++it){
           (*it)->Draw();
