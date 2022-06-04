@@ -76,6 +76,7 @@ void GuardDogVisitor::VisitBomb(const Bomb * element) const {
             this->guardDog->dx + (this->guardDog->sw))
         ){
         this->guardDog->movementStateMachine->Request(DEAD);
+        this->guardDog->hitByBomb = true;
     }else{
         this->guardDog->blockDown |= this->guardDog->BlockRow(element->row - 1, element->column );//blockleft
         this->guardDog->blockUp |= this->guardDog->BlockRow(element->row + 1, element->column );//blockright
@@ -127,7 +128,7 @@ void GuardDog::Move() {
 
             this->removed = true;
 
-        }else if(this->movementStateMachine->state == DYING){
+        }else if(this->hitByBomb || this->movementStateMachine->state == DYING){
             
             movementStateMachine->Request(DEAD);
 

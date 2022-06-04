@@ -224,8 +224,8 @@ vector<Visitor *> Stage::visitorlist;
       this->subject->CreateEvent(RIGHT);
     }		
     
-    this->ProcessVisitors();
     this->ProcessMovements();
+    this->ProcessVisitors();
     this->bombSubject->UpdateTimer();
     
     return true;

@@ -25,6 +25,7 @@ class Mob {
     
         Component * component;
         
+        bool hitByBomb = false;
         Mob(Component * component);
         virtual ~Mob(){};
 }; 

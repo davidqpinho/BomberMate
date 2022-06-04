@@ -77,6 +77,8 @@ void ButterflyVisitor::VisitBomb(const Bomb * element) const {
             this->butterfly->dx + (this->butterfly->sw))
         ){
         this->butterfly->movementStateMachine->Request(DEAD);
+        this->butterfly->hitByBomb = true;
+        
     }
 }
 
@@ -123,7 +125,7 @@ void Butterfly::Move() {
 
             this->removed = true;
 
-        }else if(this->movementStateMachine->state == DYING){
+        }else if(this->hitByBomb || this->movementStateMachine->state == DYING){
             
             movementStateMachine->Request(DEAD);
 
