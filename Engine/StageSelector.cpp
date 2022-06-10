@@ -52,6 +52,8 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
         break;
         case OCTOPUS:
         component = new Octopus(row, column);
+        case SHOTTERPENGUIN:
+        component = new ShotterPenguin(row, column);
         break;
      }
      return component; 

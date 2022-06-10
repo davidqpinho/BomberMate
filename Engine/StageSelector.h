@@ -14,6 +14,7 @@
 #include "../Components/GuardDog.h"
 #include "../Components/JellyGirl.h"
 #include "../Components/Octopus.h"
+#include "../Components/ShotterPenguin.h"
 
 #define MAXROWNUMBER          8
 #define MAXCOLUMNNUMBER       10

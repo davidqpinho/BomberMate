@@ -13,11 +13,13 @@
 
     #define FIELDSTAGE     1
     //Components
-    #define BRICK       0
-    #define BRICKWALL   1
-    #define GUARDDOG    2
-    #define BUTTERFLY   3
-    #define OCTOPUS     4
-    #define JELLYGIRL   5
+    #define BRICK           0
+    #define BRICKWALL       1
+    #define GUARDDOG        2
+    #define BUTTERFLY       3
+    #define OCTOPUS         4
+    #define JELLYGIRL       5
+    #define SHOTTERPENGUIN  6
+    #define CAPTAINPENGUIN  7
     
 #endif

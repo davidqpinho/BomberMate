@@ -67,7 +67,7 @@ bool FieldStage::CheckForForbidemSpots(int column, int row){
 }
 
 void FieldStage::LoadMobs( list<Component*>& componentList ) const {
-    componentList.push_back(StageSelector::ComponentFactory(OCTOPUS,4,4, -1));
+    componentList.push_back(StageSelector::ComponentFactory(SHOTTERPENGUIN,4,4, -1));
     /*vector<ComponentIndex> ramdomComponents;
     int count = 0, mob;
     
