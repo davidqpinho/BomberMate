@@ -47,13 +47,18 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
         break;
         case BUTTERFLY:
         component = new Butterfly(row, column);
+        break;
         case JELLYGIRL:
         component = new JellyGirl(row, column);
         break;
         case OCTOPUS:
         component = new Octopus(row, column);
+        break;
         case SHOTTERPENGUIN:
         component = new ShotterPenguin(row, column);
+        break;
+        case CAPTAINPENGUIN:
+        component = new CaptainPenguin(row, column);
         break;
      }
      return component; 
