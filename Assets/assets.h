@@ -13,6 +13,7 @@
     #define HEADERSIZE     120
 
     #define FIELDSTAGE     1
+    #define ROCKSTAGE      2
     //Components
     #define BRICK           0
     #define BRICKWALL       1

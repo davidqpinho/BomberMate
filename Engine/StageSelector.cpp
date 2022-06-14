@@ -1,12 +1,15 @@
 #include "StageSelector.h"
 #include "../Stages/FieldStage.h"
+#include "../Stages/RockStage.h"
 #include "../Scenes/Stage.h"
 
 StageSelector * StageSelector::StageFactory(int StageIndex){
        
      switch (StageIndex){
              case FIELDSTAGE:                 
-             return new FieldStage();     
+             return new FieldStage(); 
+             case ROCKSTAGE:                 
+             return new RockStage();     
      }
      
      return NULL;
