@@ -1,8 +1,8 @@
 #include "FieldStage.h"
 
-FieldStage::FieldStage(int staticComponent, int destructableWall){
-    this->staticComponent = staticComponent;
-    this->destructableWall = destructableWall;
+FieldStage::FieldStage(){
+    this->staticComponent = BRICK;
+    this->destructableWall = BRICKWALL;
 }
 
 void FieldStage::GetStageBitmap(ALLEGRO_BITMAP ** bitmap) {
@@ -36,7 +36,7 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
 
      vector<ComponentIndex> ramdomComponents;
      //componentList.push_back(new ConsumableItem(LIFE, 6,7));
-     componentList.push_back(StageSelector::ComponentFactory(BRICKWALL,6,6, SPD));
+     componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,6,6, -1));
      ramdomComponents = StageSelector::GetRandomComponents(componentList, 15, CheckForForbidemSpots);
      int counter = 0;
      
@@ -51,7 +51,7 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
          if(counter == 0)
             consumable = NOBS;
 
-         componentList.push_back(StageSelector::ComponentFactory(BRICKWALL,ramdomComponentsIt->column,ramdomComponentsIt->row, consumable));
+         componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,ramdomComponentsIt->column,ramdomComponentsIt->row, consumable));
      }
      
 }
@@ -67,8 +67,8 @@ bool FieldStage::CheckForForbidemSpots(int column, int row){
 }
 
 void FieldStage::LoadMobs( list<Component*>& componentList ) const {
-    componentList.push_back(StageSelector::ComponentFactory(CAPTAINPENGUIN,4,4, -1));
-    /*vector<ComponentIndex> ramdomComponents;
+    
+    vector<ComponentIndex> ramdomComponents;
     int count = 0, mob;
     
     ramdomComponents = StageSelector::GetRandomComponents(componentList, 4, CheckForForbidemSpots);
@@ -80,7 +80,7 @@ void FieldStage::LoadMobs( list<Component*>& componentList ) const {
         componentList.push_back(
              StageSelector::ComponentFactory(mob,ramdomComponentsIt->column,ramdomComponentsIt->row, -1)
         );
-     }*/
+     }
 }
 
 void FieldStage::LoadPlayerOne( list<Component*>& componentList ) const {

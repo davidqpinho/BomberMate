@@ -2,14 +2,20 @@
 
 
 StaticComponent::StaticComponent(int StaticComponent, int row, int column): Wall(this){
-       
+   
+   Stage::GetSheet(this, 2);
    switch(StaticComponent){
        case BRICK:
         this->sx = BRICK_SX;
         this->sy = BRICK_SY;
         this->sh = BRICK_SH;
         this->sw = BRICK_SW;
-        Stage::GetSheet(this, 2);
+        break;
+       case ROCK:
+        this->sx = ROCK_SX;
+        this->sy = ROCK_SY;
+        this->sh = ROCK_SH;
+        this->sw = ROCK_SW;        
        break;
    }
 

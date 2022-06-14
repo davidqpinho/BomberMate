@@ -6,7 +6,7 @@ StageSelector * StageSelector::StageFactory(int StageIndex){
        
      switch (StageIndex){
              case FIELDSTAGE:                 
-             return new FieldStage(BRICK, BRICKWALL);     
+             return new FieldStage();     
      }
      
      return NULL;
@@ -15,15 +15,14 @@ StageSelector * StageSelector::StageFactory(int StageIndex){
 
 
 void  StageSelector::BuildStaticComponents( list<Component*>& componentList, bool (*checkSpots)(int, int), int staticComponent ){
-        
         for(int row = 0; row < MAXROWNUMBER; row++){ 
         for(int column = 0; column < MAXCOLUMNNUMBER; column++){ 
             if( row == 0 || row == MAXROWNUMBER-1){                
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
+                componentList.push_back(StageSelector::ComponentFactory(staticComponent,column,row, -1));
             }else if( (column == 0 || column == MAXCOLUMNNUMBER - 1 ) && (row > 0 && row < MAXROWNUMBER-1)){
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
+                componentList.push_back(StageSelector::ComponentFactory(staticComponent,column,row, -1));
             }else if( checkSpots(column, row) && (row > 0 && row < MAXROWNUMBER-1) && (column > 0 && column < MAXCOLUMNNUMBER-1)){
-                componentList.push_back(StageSelector::ComponentFactory(BRICK,column,row, -1));
+                componentList.push_back(StageSelector::ComponentFactory(staticComponent,column,row, -1));
             }
         }
         
@@ -36,10 +35,12 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
      Component * component = NULL;
      
      switch (componentIndex){
-        case BRICK:                 
+        case BRICK:
+        case ROCK:                 
         component = new StaticComponent(componentIndex, row, column);              
         break; 
         case BRICKWALL: 
+        case ROCKWALL:
         component = new DestructableWall(componentIndex, row, column, consumable);                
         break;
         case GUARDDOG:

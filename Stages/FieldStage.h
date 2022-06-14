@@ -18,7 +18,7 @@ class FieldStage : public StageSelector  {
         static bool CheckStaticSpot(int column, int row);
         static bool CheckForForbidemSpots(int column, int row);      
     public:        
-        FieldStage(int staticComponent, int destructableWall);
+        FieldStage();
         void GetStageBitmap(ALLEGRO_BITMAP ** bitmap) override;
         void LoadStaticComponents( list<Component*>& componentList ) const override;
         void LoadMobs( list<Component*>& componentList ) const override;

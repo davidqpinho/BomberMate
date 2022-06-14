@@ -8,10 +8,14 @@
 #include "../Engine/Component.h"
 #include "../Scenes/Stage.h"
 
-#define BRICK_SX  702
-#define BRICK_SY  180
-#define BRICK_SH  BLOCKHEIGHT
-#define BRICK_SW  BLOCKWIDTH
+#define BRICK_SX    702 //702
+#define BRICK_SY    180 //180
+#define ROCK_SX     807.5
+#define ROCK_SY     469
+#define ROCK_SH     86
+#define ROCK_SW     100
+#define BRICK_SH    BLOCKHEIGHT
+#define BRICK_SW    BLOCKWIDTH
 
 class StaticComponent : public Component, public Wall {   
 
