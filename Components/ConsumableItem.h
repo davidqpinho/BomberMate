@@ -14,6 +14,7 @@
 #define SPD     2
 #define STRG    3
 #define NOBS    4
+#define DOOR    5
 
 class ConsumableItemVisitor;
 

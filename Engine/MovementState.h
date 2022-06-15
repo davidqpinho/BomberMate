@@ -21,6 +21,7 @@
 #define DOWN                                            3 
 #define DEAD                                            4
 #define PLAYER_GAMEOVER                                 5
+#define FINISHSTAGE                                     6
 
 #define LEFTPACE                                        0
 #define RIGHTPACE                                       1

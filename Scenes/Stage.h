@@ -14,6 +14,7 @@
 #include "../Assets/assets.h"
 #include "../Engine/ButtonController.h"
 #include "GameOver.h"
+#include "StageTransition.h"
 #include "../Engine/Component.h"
 #include "../Engine/StageSelector.h"
 #include "../Components/StaticComponent.h"
@@ -25,7 +26,7 @@
 #include "../Engine/BombTracker.h"
 
 #define STAGE_RUNNING     0
-#define STAGE_GAME_OVER   1
+#define STAGE_GAME_OVER   -1
 #define STATUS_COLOR      al_map_rgb(255, 171, 0)
 #define ST_CL             75
 #define ST_R1             50
@@ -50,6 +51,11 @@
 #define NOBS_SY           680
 #define NOBS_SW           106
 #define NOBS_SH           92
+
+#define DOOR_SX           1139
+#define DOOR_SY           107
+#define DOOR_SW           106
+#define DOOR_SH           92
 
 
 using namespace std;

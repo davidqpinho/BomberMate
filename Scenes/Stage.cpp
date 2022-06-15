@@ -19,7 +19,7 @@ vector<Visitor *> Stage::visitorlist;
     
     subject = new Subject;
     Stage::eventsObserver = new Observer(*subject);
-    
+    this->stageStatus = stage;
     StageSelector * selector = StageSelector::StageFactory(stage);
     this->observer = new PlayerObserver(* Stage::playerSubject);   
     
@@ -128,8 +128,12 @@ vector<Visitor *> Stage::visitorlist;
     {
       case STAGE_GAME_OVER:
         this->scene_->TransitionTo(new GameOver());
-        break;      
+        break;     
+      case FIELDSTAGE:
+        this->scene_->TransitionTo(new StageTransition(ROCKSTAGE));
+        break;  
       default:
+        this->scene_->TransitionTo(new GameOver());
         break;
     }
     return true;
@@ -186,9 +190,15 @@ vector<Visitor *> Stage::visitorlist;
 
     
     ALLEGRO_KEYBOARD_STATE keyState;
+    int playerEvent = Stage::eventsObserver->ReadEvent();
 
-    if(Stage::eventsObserver->ReadEvent() == PLAYER_GAMEOVER){
+    if( playerEvent == PLAYER_GAMEOVER){
       this->stageStatus = STAGE_GAME_OVER;
+      this->Handle();
+    }
+
+    if( playerEvent == FINISHSTAGE)
+    {      
       this->Handle();
     }
 

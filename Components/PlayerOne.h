@@ -72,6 +72,7 @@ class PlayerOne : public Component, public Movable {
   void Move() override;
   void Draw() override;
   void Accept(Visitor *visitor) const override;
+  void FinishStage();
   
 };
 

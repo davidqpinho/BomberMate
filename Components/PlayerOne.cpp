@@ -48,6 +48,10 @@ PlayerOne::PlayerOne(int row, int column): Movable(this){
     
 } 
 
+void PlayerOne::FinishStage(){
+    Stage::eventsObserver->Update(FINISHSTAGE);
+}
+
 void PlayerOne::Accept(Visitor *visitor) const {
 
     visitor->VisitPlayerOne(this);

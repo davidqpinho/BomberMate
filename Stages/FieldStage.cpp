@@ -35,7 +35,6 @@ bool FieldStage::CheckStaticSpot(int column, int row) {
 void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) const {
 
      vector<ComponentIndex> ramdomComponents;
-     //componentList.push_back(new ConsumableItem(LIFE, 6,7));
      componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,6,6, -1));
      ramdomComponents = StageSelector::GetRandomComponents(componentList, 15, CheckForForbidemSpots);
      int counter = 0;
@@ -48,6 +47,8 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
             consumable = STRG;
          if(counter == 12)
             consumable = SPD;
+         if(counter == 14)
+            consumable = DOOR;
          if(counter == 0)
             consumable = NOBS;
 

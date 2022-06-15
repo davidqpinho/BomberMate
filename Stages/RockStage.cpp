@@ -48,6 +48,8 @@ void RockStage::LoadDestructableComponents( list<Component*>& componentList ) co
             consumable = STRG;
          if(counter == 12)
             consumable = SPD;
+         if(counter == 14)
+            consumable = DOOR;
          if(counter == 0)
             consumable = NOBS;
 

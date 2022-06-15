@@ -5,6 +5,7 @@ ConsumableItem::ConsumableItem(int ConsumableItem, int row, int column){
    this->ItemType = ConsumableItem;
    Stage::GetSheet(this, 1);  
    this->zpos = 0;
+   
    switch(ConsumableItem){
        case LIFE:
         this->sx = LIFE_SX;
@@ -29,6 +30,12 @@ ConsumableItem::ConsumableItem(int ConsumableItem, int row, int column){
         this->sy = NOBS_SY;        
         this->sh = NOBS_SH;
         this->sw = NOBS_SW;
+        break;
+       case DOOR:
+        this->sx = DOOR_SX;
+        this->sy = DOOR_SY;        
+        this->sh = DOOR_SH;
+        this->sw = DOOR_SW;
         break;
    } 
 
@@ -81,6 +88,9 @@ void ConsumableItemVisitor::VisitPlayerOne(const PlayerOne *player) const{
                break;
             case STRG:
                playerModifier->AddBombStrenhth();
+               break;
+            case DOOR:
+               playerModifier->FinishStage();
                break;
            default:
                break;
