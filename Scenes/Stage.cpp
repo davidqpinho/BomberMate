@@ -141,7 +141,6 @@ vector<Visitor *> Stage::visitorlist;
           this->observer->GetLife(), 
           this->observer->GetBombStrength(), 
           this->observer->GetRealSpeed(), 
-          this->observer->GetLife(),
           this->observer->GetNOBombs()
         ));
         break;  

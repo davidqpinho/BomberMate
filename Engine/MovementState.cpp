@@ -164,7 +164,7 @@ int MovementState::TurnPace(){
 
 MovementContext::MovementContext(MovementState *state, Movable *movableObj, int speed, int direction) : state_(nullptr){
 
-    this->speed = speed;
+    this->speed = (speed-8)*2+8;
     this->direction = direction;
     this->TransitionTo(state);
     this->movableObj_ = movableObj;

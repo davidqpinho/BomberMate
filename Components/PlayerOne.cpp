@@ -165,7 +165,7 @@ void PlayerOne::Colide() {
 }
 
 void PlayerOne::Move() {
-
+    printf("\nvelocidade %d", this->speed);
     UpdatePlayerStatus;
 
     int event = Stage::eventsObserver->GetEvent();
@@ -185,7 +185,6 @@ void PlayerOne::Move() {
             --this->life;            
             this->row    = this->initialRow;
             this->column = this->initialColumn;
-            this->speed = INITIAL_SPEED;
             this->DefineBlockPosition(this->row, this->column);
             delete this->movementStateMachine;
             this->movementStateMachine = new MovementContext(new TurnState(), this, this->speed, UP);

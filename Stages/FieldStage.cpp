@@ -33,7 +33,6 @@ bool FieldStage::CheckStaticSpot(int column, int row) {
 }
 
 void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) const {
-
      vector<ComponentIndex> ramdomComponents;
      componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,6,6, -1));
      ramdomComponents = StageSelector::GetRandomComponents(componentList, 15, CheckForForbidemSpots);
@@ -53,8 +52,7 @@ void FieldStage::LoadDestructableComponents( list<Component*>& componentList ) c
             consumable = NOBS;
 
          componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,ramdomComponentsIt->column,ramdomComponentsIt->row, consumable));
-     }
-     
+     }     
 }
 
 bool FieldStage::CheckForForbidemSpots(int column, int row){

@@ -33,8 +33,7 @@ bool RockStage::CheckStaticSpot(int column, int row) {
 }
 
 void RockStage::LoadDestructableComponents( list<Component*>& componentList ) const {
-
-     vector<ComponentIndex> ramdomComponents;
+    vector<ComponentIndex> ramdomComponents;
      //componentList.push_back(new ConsumableItem(LIFE, 6,7));
      componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,6,6, -1));
      ramdomComponents = StageSelector::GetRandomComponents(componentList, 15, CheckForForbidemSpots);
@@ -55,7 +54,6 @@ void RockStage::LoadDestructableComponents( list<Component*>& componentList ) co
 
          componentList.push_back(StageSelector::ComponentFactory(this->destructableWall,ramdomComponentsIt->column,ramdomComponentsIt->row, consumable));
      }
-     
 }
 
 bool RockStage::CheckForForbidemSpots(int column, int row){
