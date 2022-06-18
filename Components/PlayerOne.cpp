@@ -1,7 +1,17 @@
 #include "PlayerOne.h"
 
-PlayerOne::PlayerOne(int row, int column): Movable(this){
-
+PlayerOne::PlayerOne(
+    int row, 
+    int column, 
+    int life,
+    int bombStrength,
+    int speed,
+    int nOBombs ): Movable(this){
+        
+    this->life = life;
+    this->bombStrength = bombStrength;
+    this->speed = speed;
+    this->nOBombs = nOBombs;
     this->movementStateMachine = new MovementContext(new TurnState(), this, this->speed, UP);  
     this->sh = P_ONE_SH;
     this->sw = P_ONE_SW; 

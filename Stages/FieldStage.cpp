@@ -11,7 +11,7 @@ void FieldStage::GetStageBitmap(ALLEGRO_BITMAP ** bitmap) {
 
 }
 
-void FieldStage::LoadStaticComponents( list<Component*>& componentList )  const {    
+void FieldStage::LoadStaticComponents( list<Component*>& componentList)  const {    
     StageSelector::BuildStaticComponents(componentList, CheckStaticSpot, this->staticComponent);    
 }
 
@@ -84,9 +84,9 @@ void FieldStage::LoadMobs( list<Component*>& componentList ) const {
      }
 }
 
-void FieldStage::LoadPlayerOne( list<Component*>& componentList ) const {
+void FieldStage::LoadPlayerOne( list<Component*>& componentList, int life, int bombStrength, int speed, int nOBombs ) const {
     
-    Component * playerOne = new PlayerOne(6,8);
+    Component * playerOne = new PlayerOne(6,8,life,bombStrength,speed,nOBombs);
     playerOne->sheet = &Stage::sheet1;
     if(!playerOne->sheet ) 
     {

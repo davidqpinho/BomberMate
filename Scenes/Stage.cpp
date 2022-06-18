@@ -7,7 +7,13 @@ PlayerSubject * Stage::playerSubject;
 BombSubject * Stage::bombSubject;
 vector<Visitor *> Stage::visitorlist; 
 
-  Stage::Stage(int stage){
+  Stage::Stage(
+    int stage,
+    int life,
+    int bombStrength,
+    int speed,
+    int nOBombs
+    ){
     
     Stage::sheet1 = NULL;
     Stage::sheet2 = NULL;
@@ -64,7 +70,7 @@ vector<Visitor *> Stage::visitorlist;
     selector->LoadStaticComponents(this->componentList);    
     selector->LoadMobs(this->componentList);
     selector->LoadDestructableComponents(this->componentList);
-    selector->LoadPlayerOne(this->componentList);    
+    selector->LoadPlayerOne(this->componentList, life, bombStrength, speed, nOBombs);    
     
     delete selector;
   }
@@ -130,7 +136,14 @@ vector<Visitor *> Stage::visitorlist;
         this->scene_->TransitionTo(new GameOver());
         break;     
       case FIELDSTAGE:
-        this->scene_->TransitionTo(new StageTransition(ROCKSTAGE));
+        this->scene_->TransitionTo(new StageTransition(
+          ROCKSTAGE, 
+          this->observer->GetLife(), 
+          this->observer->GetBombStrength(), 
+          this->observer->GetRealSpeed(), 
+          this->observer->GetLife(),
+          this->observer->GetNOBombs()
+        ));
         break;  
       default:
         this->scene_->TransitionTo(new GameOver());

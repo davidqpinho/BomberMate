@@ -57,6 +57,8 @@ class PlayerObserver : public IPlayerObserver {
 
   int  GetSpeed();
 
+  int  GetRealSpeed();
+
   int  GetNOBombs();
 
   int  GetLine();

@@ -62,7 +62,7 @@ class PlayerOne : public Component, public Movable {
   int life = 0, bombStrength = 1, speed = 8, nOBombs = 1;
   MovementContext *movementStateMachine;  
   PlayerOneVisitor * visitor;
-  PlayerOne(int row, int column) ; 
+  PlayerOne(int row, int column, int life, int bombStrength, int speed, int nOBombs); 
   ~PlayerOne();
   void AddLife();
   void AddBombStrenhth();

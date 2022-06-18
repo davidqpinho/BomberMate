@@ -86,7 +86,13 @@ using namespace std;
     static Observer *eventsObserver;
     static vector<Visitor *> visitorlist; 
 
-    Stage(int stage);
+    Stage(
+      int stage,
+      int life,
+      int bombStrength,
+      int speed,
+      int nOBombs
+    );
     ~Stage();
 
     int  Handle() override;

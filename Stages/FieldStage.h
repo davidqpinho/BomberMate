@@ -23,8 +23,7 @@ class FieldStage : public StageSelector  {
         void LoadStaticComponents( list<Component*>& componentList ) const override;
         void LoadMobs( list<Component*>& componentList ) const override;
         void LoadDestructableComponents( list<Component*>& componentList ) const override;
-        void LoadPlayerOne( list<Component*>& componentList ) const override;
- 
+        void LoadPlayerOne( list<Component*>& componentList, int life, int bombStrength, int speed, int nOBombs) const override; 
 };
 
 #endif

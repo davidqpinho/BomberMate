@@ -41,7 +41,13 @@ class StageSelector{
    virtual void LoadStaticComponents( list<Component*>& componentList ) const = 0;
    virtual void LoadMobs( list<Component*>& componentList ) const = 0;
    virtual void LoadDestructableComponents( list<Component*>& componentList ) const = 0;
-   virtual void LoadPlayerOne( list<Component*>& componentList) const = 0;   
+   virtual void LoadPlayerOne( 
+     list<Component*>& componentList,
+     int life,
+     int bombStrength,
+     int speed,
+     int nOBombs
+   ) const = 0;   
   
 };
 

@@ -21,7 +21,9 @@ int  PlayerObserver::GetSpeed(){
     int realSpeed = (this->event & 65280) >> 8;
     return (realSpeed - 8)/2;
 }
-
+int  PlayerObserver::GetRealSpeed(){
+    return (this->event & 65280) >> 8;
+}
 int  PlayerObserver::GetLine(){
     return this->event & 15;
 }

@@ -85,9 +85,9 @@ void RockStage::LoadMobs( list<Component*>& componentList ) const {
      }
 }
 
-void RockStage::LoadPlayerOne( list<Component*>& componentList ) const {
+void RockStage::LoadPlayerOne( list<Component*>& componentList, int life, int bombStrength, int speed, int nOBombs) const {
     
-    Component * playerOne = new PlayerOne(6,8);
+    Component * playerOne = new PlayerOne(6,8,life,bombStrength,speed,nOBombs);
     playerOne->sheet = &Stage::sheet1;
     if(!playerOne->sheet ) 
     {

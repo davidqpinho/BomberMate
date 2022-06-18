@@ -11,10 +11,14 @@
 
 class StageTransition : public Scene {
  private:
-  int stage;
+  int stage,
+  life,
+  bombStrength,
+  speed,
+  nOBombs;
 
  public:
-  StageTransition(int stage);
+  StageTransition(int stage, int life, int bombStrength, int speed, int nOBombs);
   ~StageTransition();
   int Handle() override;
   void Run() override;
