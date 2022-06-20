@@ -1,7 +1,7 @@
 #include "ShotterPenguin.h"
 
 ShotterPenguin::ShotterPenguin(int row, int column): Movable(this), Mob(this){
-    this->movementStateMachine = new MovementContext(new TurnState(), this, 0, DOWN);  
+    this->movementStateMachine = new MovementContext(new TurnState(), this, 4, DOWN);  
     Stage::GetSheet(this, 2);
     this->sx = SHOTTER_PENGUIN_D_S1_SX;
     this->sy = SHOTTER_PENGUIN_D_S3_SY;
