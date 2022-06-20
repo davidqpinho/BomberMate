@@ -64,6 +64,11 @@ void CaptainPenguinVisitor::VisitWall(const Wall *element) const{
 void CaptainPenguinVisitor::VisitMob(const Mob *element) const{
 
 }
+void CaptainPenguinVisitor::VisitPlayerOne(const PlayerOne *player) const{
+   this->captainPenguin->playerColumn = player->column; 
+   this->captainPenguin->playerRow    = player->row;    
+}
+
 
 void CaptainPenguinVisitor::VisitBomb(const Bomb * element) const {
     
@@ -100,6 +105,20 @@ void CaptainPenguin::Colide() {
 int CaptainPenguin::GetEvent(int direction){
       
     vector<int> allowedDirections;
+
+    if(this->column == playerColumn){
+        if(!this->blockDown && this->playerRow > this->row)
+            return DOWN;
+        if(!this->blockUp && this->playerRow < this->row)
+            return UP;
+    }
+
+    if(this->row == playerRow){
+        if(!this->blockRight && this->playerColumn > this->column)
+            return RIGHT;
+        if(!this->blockLeft  && this->playerColumn < this->column)
+            return LEFT;
+    }
     
     if(!this->blockUp) allowedDirections.push_back(UP); 
     if(!this->blockDown) allowedDirections.push_back(DOWN); 

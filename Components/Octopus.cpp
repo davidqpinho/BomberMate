@@ -1,7 +1,7 @@
 #include "Octopus.h"
 
 Octopus::Octopus(int row, int column): Movable(this), Mob(this){
-    this->movementStateMachine = new MovementContext(new TurnState(), this, 0, DOWN);  
+    this->movementStateMachine = new MovementContext(new TurnState(), this, 4, DOWN);  
     Stage::GetSheet(this, 1);
     this->sx = OCTOPUS_D_S3_SX;
     this->sy = OCTOPUS_D_S3_SY;

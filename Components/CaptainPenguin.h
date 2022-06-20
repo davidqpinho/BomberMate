@@ -59,6 +59,7 @@ class CaptainPenguin : public Component, public Movable, public Mob {
   int GetEvent(int direction);
   int tempCounter = 0;
  public:  
+  int playerColumn = -1, playerRow = -1;
   MovementContext *movementStateMachine;
   
   CaptainPenguinVisitor * visitor;
@@ -77,7 +78,7 @@ class CaptainPenguinVisitor : public Visitor {
   CaptainPenguin * captainPenguin;
  public:  
   CaptainPenguinVisitor(CaptainPenguin * captainPenguin);
-  void VisitPlayerOne(const PlayerOne *player) const override {};
+  void VisitPlayerOne(const PlayerOne *player) const override;
   void VisitConsumableItem(const ConsumableItem * element) const override {};
   void VisitBomb(const Bomb * element) const override;
   void VisitWall(const Wall *element) const override;

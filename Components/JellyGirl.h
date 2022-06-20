@@ -59,8 +59,8 @@ class JellyGirl : public Component, public Movable, public Mob {
   int GetEvent(int direction);
   int tempCounter = 0;
  public:  
-  MovementContext *movementStateMachine;
-  
+  int playerColumn=-1, playerRow=-1;
+  MovementContext *movementStateMachine;  
   JellyGirlVisitor * visitor;
   JellyGirl(int row, int column) ; 
   ~JellyGirl();
@@ -77,7 +77,7 @@ class JellyGirlVisitor : public Visitor {
   JellyGirl * jellyGirl;
  public:  
   JellyGirlVisitor(JellyGirl * jellyGirl);
-  void VisitPlayerOne(const PlayerOne *player) const override {};
+  void VisitPlayerOne(const PlayerOne *player) const override;
   void VisitConsumableItem(const ConsumableItem * element) const override {};
   void VisitBomb(const Bomb * element) const override;
   void VisitWall(const Wall *element) const override;

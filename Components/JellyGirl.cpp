@@ -65,6 +65,11 @@ void JellyGirlVisitor::VisitMob(const Mob *element) const{
 
 }
 
+void JellyGirlVisitor::VisitPlayerOne(const PlayerOne *player) const{
+   this->jellyGirl->playerColumn = player->column; 
+   this->jellyGirl->playerRow    = player->row;    
+}
+
 void JellyGirlVisitor::VisitBomb(const Bomb * element) const {
     
     if( this->jellyGirl->movementStateMachine->state != DYING  && 
@@ -100,6 +105,20 @@ void JellyGirl::Colide() {
 int JellyGirl::GetEvent(int direction){
       
     vector<int> allowedDirections;
+
+    if(this->column == playerColumn){
+        if(!this->blockDown && this->playerRow > this->row)
+            return DOWN;
+        if(!this->blockUp && this->playerRow < this->row)
+            return UP;
+    }
+
+    if(this->row == playerRow){
+        if(!this->blockRight && this->playerColumn > this->column)
+            return RIGHT;
+        if(!this->blockLeft  && this->playerColumn < this->column)
+            return LEFT;
+    }
     
     if(!this->blockUp) allowedDirections.push_back(UP); 
     if(!this->blockDown) allowedDirections.push_back(DOWN); 
