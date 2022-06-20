@@ -143,6 +143,15 @@ vector<Visitor *> Stage::visitorlist;
           this->observer->GetRealSpeed(), 
           this->observer->GetNOBombs()
         ));
+        break;
+      case ROCKSTAGE:
+        this->scene_->TransitionTo(new StageTransition(
+          ICESTAGE, 
+          this->observer->GetLife(), 
+          this->observer->GetBombStrength(), 
+          this->observer->GetRealSpeed(), 
+          this->observer->GetNOBombs()
+        ));
         break;  
       default:
         this->scene_->TransitionTo(new GameOver());

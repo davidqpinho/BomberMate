@@ -16,6 +16,12 @@ StaticComponent::StaticComponent(int StaticComponent, int row, int column): Wall
         this->sy = ROCK_SY;
         this->sh = ROCK_SH;
         this->sw = ROCK_SW;        
+        break;
+       case ICECUBE:
+        this->sx = ICECUBE_SX;
+        this->sy = ICECUBE_SY;
+        this->sh = ICECUBE_SH;
+        this->sw = ICECUBE_SW;        
        break;
    }
 

@@ -14,6 +14,10 @@
 #define ROCK_SY     469
 #define ROCK_SH     86
 #define ROCK_SW     100
+#define ICECUBE_SX  921  
+#define ICECUBE_SY  563   
+#define ICECUBE_SH  BLOCKHEIGHT
+#define ICECUBE_SW  BLOCKWIDTH
 #define BRICK_SH    BLOCKHEIGHT
 #define BRICK_SW    BLOCKWIDTH
 

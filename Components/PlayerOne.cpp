@@ -165,7 +165,6 @@ void PlayerOne::Colide() {
 }
 
 void PlayerOne::Move() {
-    printf("\nvelocidade %d", this->speed);
     UpdatePlayerStatus;
 
     int event = Stage::eventsObserver->GetEvent();

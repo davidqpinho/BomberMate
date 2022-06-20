@@ -9,10 +9,17 @@
 #include "../Scenes/Stage.h"
 #include "../Engine/BaseClass.h"
 
-#define BRICKWALL_SX  920
-#define BRICKWALL_SY  180
-#define BRICKWALL_SH  BLOCKHEIGHT
-#define BRICKWALL_SW  BLOCKWIDTH
+#define BRICKWALL_SX     920
+#define BRICKWALL_SY     180
+#define BRICKWALL_SH     BLOCKHEIGHT
+#define BRICKWALL_SW     BLOCKWIDTH
+#define BCKW_D1_SX       1030
+#define BCKW_D1_SY       180
+#define BCKW_D2_SX       1135
+#define BCKW_D2_SY       180
+#define BCKW_D3_SX       1245
+#define BCKW_D3_SY       180
+
 #define ROCKWALL_D3_SX   702     //D3
 #define ROCKWALL_D3_SY   469     //D3
 #define ROCKWALL_D2_SX   1244    //D2
@@ -23,12 +30,18 @@
 #define ROCKWALL_SY      373   
 #define ROCKWALL_SH      86
 #define ROCKWALL_SW      100
-#define BCKW_D1_SX       1030
-#define BCKW_D1_SY       180
-#define BCKW_D2_SX       1135
-#define BCKW_D2_SY       180
-#define BCKW_D3_SX       1245
-#define BCKW_D3_SY       180
+
+#define SNOWMAN_D3_SX   702
+#define SNOWMAN_D3_SY   658
+#define SNOWMAN_D2_SX   1243
+#define SNOWMAN_D2_SY   563 
+#define SNOWMAN_D1_SX   1135
+#define SNOWMAN_D1_SY   563 
+#define SNOWMAN_SX      1027  
+#define SNOWMAN_SY      563   
+#define SNOWMAN_SH      86
+#define SNOWMAN_SW      100
+
 #define DEST_STEP1       5  
 #define DEST_STEP2       10
 #define DEST_STEP3       15

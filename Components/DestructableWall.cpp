@@ -31,6 +31,18 @@ DestructableWall::DestructableWall(int DestructableWall, int row, int column, in
         this->DS2_SY = ROCKWALL_D2_SY;
         this->DS3_SX = ROCKWALL_D3_SX;
         this->DS3_SY = ROCKWALL_D3_SY;
+        break;
+       case SNOWMAN:
+        this->sx     = SNOWMAN_SX;
+        this->sy     = SNOWMAN_SY;        
+        this->sh     = SNOWMAN_SH;
+        this->sw     = SNOWMAN_SW;
+        this->DS1_SX = SNOWMAN_D1_SX;
+        this->DS1_SY = SNOWMAN_D1_SY;
+        this->DS2_SX = SNOWMAN_D2_SX;
+        this->DS2_SY = SNOWMAN_D2_SY;
+        this->DS3_SX = SNOWMAN_D3_SX;
+        this->DS3_SY = SNOWMAN_D3_SY;
        break;
    } 
 

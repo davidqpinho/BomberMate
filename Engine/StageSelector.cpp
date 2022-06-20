@@ -1,6 +1,7 @@
 #include "StageSelector.h"
 #include "../Stages/FieldStage.h"
 #include "../Stages/RockStage.h"
+#include "../Stages/IceStage.h"
 #include "../Scenes/Stage.h"
 
 StageSelector * StageSelector::StageFactory(int StageIndex){
@@ -9,7 +10,9 @@ StageSelector * StageSelector::StageFactory(int StageIndex){
              case FIELDSTAGE:                 
              return new FieldStage(); 
              case ROCKSTAGE:                 
-             return new RockStage();     
+             return new RockStage();  
+             case ICESTAGE:                 
+             return new IceStage();     
      }
      
      return NULL;
@@ -39,10 +42,12 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
      
      switch (componentIndex){
         case BRICK:
-        case ROCK:                 
+        case ROCK:
+        case ICECUBE:                 
         component = new StaticComponent(componentIndex, row, column);              
         break; 
         case BRICKWALL: 
+        case SNOWMAN:
         case ROCKWALL:
         component = new DestructableWall(componentIndex, row, column, consumable);                
         break;

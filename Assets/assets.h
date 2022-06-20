@@ -7,6 +7,7 @@
     #define Font_04B_30         path "04B_30__.TTF"
     #define FieldStageImg       path "FieldStage.jpg"
     #define RockStageImg        path "RockStage.jpg"
+    #define IceStageImg         path "IceStage.jpg"
     #define Sheet1              path "sheet1.png"
     #define Sheet2              path "sheet2.png"
 
@@ -14,16 +15,19 @@
 
     #define FIELDSTAGE     1
     #define ROCKSTAGE      2
+    #define ICESTAGE       3
     //Components
     #define BRICK           0
     #define BRICKWALL       1
     #define ROCK            2
-    #define ROCKWALL        3 
-    #define GUARDDOG        4
-    #define BUTTERFLY       5
-    #define OCTOPUS         6
-    #define JELLYGIRL       7
-    #define SHOTTERPENGUIN  8
-    #define CAPTAINPENGUIN  9
+    #define ICECUBE         3
+    #define ROCKWALL        4
+    #define SNOWMAN         5 
+    #define GUARDDOG        6
+    #define BUTTERFLY       7
+    #define OCTOPUS         8
+    #define JELLYGIRL       9
+    #define SHOTTERPENGUIN  10
+    #define CAPTAINPENGUIN  11
     
 #endif
