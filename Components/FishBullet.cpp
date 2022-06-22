@@ -3,32 +3,39 @@
 FishBullet::FishBullet(int row, int column, int direction): Movable(this), Mob(this){
     
     this->direction = direction;
-    this->movementStateMachine = new MovementContext(new TurnState(), this, 14, DOWN);  
+    this->movementStateMachine = new MovementContext(new TurnState(), this, 10, DOWN);  
     Stage::GetSheet(this, 3);
     
     switch(direction){
         case UP:
             this->sx = FISH_BULLET_B_ST_SX;
             this->sy = FISH_BULLET_B_ST_SY;
+            this->fStSx_ = FISH_BULLET_B_ST_SX;
+            this->fStSy_ = FISH_BULLET_B_ST_SY;
         break;
         case DOWN:
             this->sx = FISH_BULLET_F_ST_SX;
             this->sy = FISH_BULLET_F_ST_SY;
+            this->fStSx_ = FISH_BULLET_F_ST_SX;
+            this->fStSy_ = FISH_BULLET_F_ST_SY;
         break;
         case RIGHT:
             this->sx = FISH_BULLET_R_ST_SX;
             this->sy = FISH_BULLET_R_ST_SY;
+            this->fStSx_ = FISH_BULLET_R_ST_SX;
+            this->fStSy_ = FISH_BULLET_R_ST_SY;
         break;
         case LEFT:
             this->sx = FISH_BULLET_L_ST_SX;
             this->sy = FISH_BULLET_L_ST_SY;
+            this->fStSx_ = FISH_BULLET_L_ST_SX;
+            this->fStSy_ = FISH_BULLET_L_ST_SY;
         break;
     }
     
     this->sh = FISH_BULLET_SH;
     this->sw = FISH_BULLET_SW;
-    this->fStSx_ = FISH_BULLET_F_ST_SX;
-    this->fStSy_ = FISH_BULLET_F_ST_SY;
+    
     this->fLpSx_ = FISH_BULLET_F_LP_SX;
     this->fLpSy_ = FISH_BULLET_F_LP_SY;
     this->fRpSx_ = FISH_BULLET_F_RP_SX;
