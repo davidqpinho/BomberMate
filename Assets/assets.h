@@ -10,6 +10,7 @@
     #define IceStageImg         path "IceStage.jpg"
     #define Sheet1              path "sheet1.png"
     #define Sheet2              path "sheet2.png"
+    #define Sheet3              path "sheet3.png"
 
     #define HEADERSIZE     120
 
@@ -29,5 +30,6 @@
     #define JELLYGIRL       9
     #define SHOTTERPENGUIN  10
     #define CAPTAINPENGUIN  11
+    #define FISHBULLET      12
     
 #endif

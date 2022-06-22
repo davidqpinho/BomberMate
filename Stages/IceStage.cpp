@@ -66,7 +66,8 @@ bool IceStage::CheckForForbidemSpots(int column, int row){
 }
 
 void IceStage::LoadMobs( list<Component*>& componentList ) const {
-    
+    //componentList.push_back(new FishBullet(4, 4, DOWN));
+       
     vector<ComponentIndex> ramdomComponents;
     int count = 0, mob;
     

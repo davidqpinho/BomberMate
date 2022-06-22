@@ -67,7 +67,7 @@ Component * StageSelector::ComponentFactory(int componentIndex, int column, int 
         component = new ShotterPenguin(row, column);
         break;
         case CAPTAINPENGUIN:
-        component = new CaptainPenguin(row, column);
+        component = new CaptainPenguin(row, column);        
         break;
      }
      return component; 
@@ -119,10 +119,6 @@ vector<ComponentIndex> StageSelector::GetRandomComponents(list<Component*>& comp
         
         --noOfSpawnedComponents;
      }
-
-     /*for(vector<ComponentIndex>::iterator it = ramdomList.begin(); it!= ramdomList.end(); it++){
-             printf("component row:%d column:%d \n", it->row, it->column);
-     }*/
      
      return ramdomList;
 

@@ -81,10 +81,12 @@ using namespace std;
 
     static ALLEGRO_BITMAP * sheet1;
     static ALLEGRO_BITMAP * sheet2;
+    static ALLEGRO_BITMAP * sheet3;
     static PlayerSubject * playerSubject;
     static BombSubject * bombSubject;
     static Observer *eventsObserver;
     static vector<Visitor *> visitorlist; 
+    static vector<Component*> componentQueue;
 
     Stage(
       int stage,

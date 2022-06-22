@@ -64,6 +64,10 @@ void ShotterPenguinVisitor::VisitWall(const Wall *element) const{
 void ShotterPenguinVisitor::VisitMob(const Mob *element) const{
 
 }
+void ShotterPenguinVisitor::VisitPlayerOne(const PlayerOne *player) const{
+   this->shotterPenguin->playerColumn = player->column; 
+   this->shotterPenguin->playerRow    = player->row;    
+}
 
 void ShotterPenguinVisitor::VisitBomb(const Bomb * element) const {
     
@@ -97,9 +101,87 @@ void ShotterPenguin::Colide() {
 
 }
 
+int ShotterPenguin::PrepareShot(){
+
+    if(this->waiting){
+        this->shotTimer --;
+        if(this->shotTimer == 0)
+            this->waiting = false;
+        return IDDLE;
+    }else{
+        if(this->shotTimer < SHOT_INTERVAL)
+            this->shotTimer ++;
+    }
+    
+    if(this->column == playerColumn){
+        if(!this->blockDown 
+        && this->shotTimer == SHOT_INTERVAL
+        && this->playerRow > this->row 
+        && this->movementStateMachine->direction == DOWN
+        ){
+           this->shotTimer --;
+           this->waiting = true;
+           Stage::componentQueue.push_back(new FishBullet(this->row + 1, this->column, DOWN));
+           return IDDLE; 
+        }
+
+        if(!this->blockUp 
+        && this->shotTimer == SHOT_INTERVAL
+        && this->playerRow < this->row 
+        && this->movementStateMachine->direction == UP
+        ){
+           this->shotTimer --;
+           this->waiting = true;
+           Stage::componentQueue.push_back(new FishBullet(this->row - 1, this->column, UP));
+           return IDDLE; 
+        }
+
+        if(!this->blockDown && this->playerRow > this->row)
+            return DOWN;
+        if(!this->blockUp && this->playerRow < this->row)
+            return UP;
+    }
+
+    if(this->row == playerRow){
+        
+        if(!this->blockRight 
+        && this->shotTimer == SHOT_INTERVAL
+        && this->playerColumn > this->column 
+        && this->movementStateMachine->direction == RIGHT
+        ){
+           this->shotTimer --;
+           this->waiting = true;
+           Stage::componentQueue.push_back(new FishBullet(this->row, this->column+1, RIGHT));
+           return IDDLE; 
+        }
+
+        if(!this->blockLeft
+        && this->shotTimer == SHOT_INTERVAL
+        && this->playerColumn < this->column 
+        && this->movementStateMachine->direction == LEFT
+        ){
+           this->shotTimer --;
+           this->waiting = true;
+           Stage::componentQueue.push_back(new FishBullet(this->row, this->column-1, LEFT));
+           return IDDLE; 
+        }
+        
+        if(!this->blockRight && this->playerColumn > this->column)
+            return RIGHT;
+        if(!this->blockLeft  && this->playerColumn < this->column)
+            return LEFT;
+    }
+
+    return -2;
+}
+
 int ShotterPenguin::GetEvent(int direction){
       
     vector<int> allowedDirections;
+    int shotMovement = this->PrepareShot();
+
+    if( shotMovement > -2)
+        return shotMovement;
     
     if(!this->blockUp) allowedDirections.push_back(UP); 
     if(!this->blockDown) allowedDirections.push_back(DOWN); 

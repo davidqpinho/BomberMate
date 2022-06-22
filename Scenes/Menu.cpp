@@ -58,7 +58,7 @@
     switch (this->mainMenuStatus)
     {
       case NEWGAME:
-        this->scene_->TransitionTo(new Stage(ROCKSTAGE, 0, 1, 8, 1));        
+        this->scene_->TransitionTo(new Stage(ICESTAGE, 0, 1, 8, 1));        
         break;
       case LOADGAME:
         this->scene_->TransitionTo(new GameOver());

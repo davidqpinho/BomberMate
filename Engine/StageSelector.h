@@ -16,6 +16,7 @@
 #include "../Components/Octopus.h"
 #include "../Components/ShotterPenguin.h"
 #include "../Components/CaptainPenguin.h"
+#include "../Components/FishBullet.h"
 
 #define MAXROWNUMBER          8
 #define MAXCOLUMNNUMBER       10

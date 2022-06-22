@@ -2,10 +2,12 @@
 
 ALLEGRO_BITMAP * Stage::sheet1;
 ALLEGRO_BITMAP * Stage::sheet2;
+ALLEGRO_BITMAP * Stage::sheet3;
 Observer * Stage::eventsObserver;
 PlayerSubject * Stage::playerSubject;
 BombSubject * Stage::bombSubject;
-vector<Visitor *> Stage::visitorlist; 
+vector<Visitor *> Stage::visitorlist;
+vector<Component*> Stage::componentQueue; 
 
   Stage::Stage(
     int stage,
@@ -17,11 +19,13 @@ vector<Visitor *> Stage::visitorlist;
     
     Stage::sheet1 = NULL;
     Stage::sheet2 = NULL;
+    Stage::sheet3 = NULL;
     Stage::eventsObserver = NULL;
     Stage::playerSubject = new PlayerSubject;
     Stage::bombSubject = new BombSubject;
 
     Stage::visitorlist = vector<Visitor *>();
+    Stage::componentQueue = vector<Component *>();
     
     subject = new Subject;
     Stage::eventsObserver = new Observer(*subject);
@@ -46,6 +50,17 @@ vector<Visitor *> Stage::visitorlist;
       
       if(!Stage::sheet2){
          printf("Error loading Sheet2.");
+         exit(1);
+      }
+    
+    } 
+
+    if(!Stage::sheet3){
+    
+      Stage::sheet3 = al_load_bitmap(Sheet3);
+      
+      if(!Stage::sheet3){
+         printf("Error loading Sheet3.");
          exit(1);
       }
     
@@ -82,6 +97,9 @@ vector<Visitor *> Stage::visitorlist;
     if(sheet == 2){
        component->sheet = &Stage::sheet2;
     }
+    if(sheet == 3){
+       component->sheet = &Stage::sheet3;
+    }
   }
 
   Stage::~Stage(){
@@ -95,6 +113,10 @@ vector<Visitor *> Stage::visitorlist;
     for (auto p : Stage::visitorlist){ 
       delete p;
     } Stage::visitorlist.clear();    
+
+    for (auto p : Stage::componentQueue){ 
+      delete p;
+    } Stage::componentQueue.clear();    
     
     subject->Detach(Stage::eventsObserver); 
     delete Stage::eventsObserver;
@@ -184,6 +206,13 @@ vector<Visitor *> Stage::visitorlist;
   void Stage::ProcessMovements(){
     
     list<Component*>::iterator it;
+
+    while (!Stage::componentQueue.empty())
+    {
+      this->componentList.push_back(Stage::componentQueue.back());
+      Stage::componentQueue.pop_back();
+    }
+
     it = this->componentList.begin();
     
     while (it != this->componentList.end())

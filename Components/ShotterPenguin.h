@@ -12,6 +12,7 @@
 #include "../Engine/BaseClass.h"
 #include "../Engine/Collider.h"
 #include "../Utils/Utils.h"
+#include "../Components/FishBullet.h"
 
 #define SHOTTER_PENGUIN_SH  66
 #define SHOTTER_PENGUIN_SW  64
@@ -50,6 +51,7 @@
 #define SHOTTER_PENGUIN_D_S2_SY  735
 #define SHOTTER_PENGUIN_D_S3_SX  630
 #define SHOTTER_PENGUIN_D_S3_SY  735
+#define SHOT_INTERVAL            50
 
 using namespace std;
 class ShotterPenguinVisitor;
@@ -60,7 +62,9 @@ class ShotterPenguin : public Component, public Movable, public Mob {
   int tempCounter = 0;
  public:  
   MovementContext *movementStateMachine;
-  
+  int playerColumn, playerRow;
+  int shotTimer = SHOT_INTERVAL;
+  bool waiting = false;
   ShotterPenguinVisitor * visitor;
   ShotterPenguin(int row, int column) ; 
   ~ShotterPenguin();
@@ -69,7 +73,7 @@ class ShotterPenguin : public Component, public Movable, public Mob {
   void Move() override;
   void Draw() override;
   void Accept(Visitor *visitor) const override;
-  
+  int  PrepareShot();  
 };
 
 class ShotterPenguinVisitor : public Visitor {
@@ -77,7 +81,7 @@ class ShotterPenguinVisitor : public Visitor {
   ShotterPenguin * shotterPenguin;
  public:  
   ShotterPenguinVisitor(ShotterPenguin * shotterPenguin);
-  void VisitPlayerOne(const PlayerOne *player) const override {};
+  void VisitPlayerOne(const PlayerOne *player) const override;
   void VisitConsumableItem(const ConsumableItem * element) const override {};
   void VisitBomb(const Bomb * element) const override;
   void VisitWall(const Wall *element) const override;
