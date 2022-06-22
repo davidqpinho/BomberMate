@@ -105,6 +105,8 @@ int ShotterPenguin::PrepareShot(){
 
     if(this->waiting){
         this->shotTimer --;
+        if(this->shotTimer == SHOT_TIME)
+            Stage::componentQueue.push_back(new FishBullet(this->row, this->column, this->movementStateMachine->direction));
         if(this->shotTimer == 0)
             this->waiting = false;
         return IDDLE;
@@ -120,8 +122,7 @@ int ShotterPenguin::PrepareShot(){
         && this->movementStateMachine->direction == DOWN
         ){
            this->shotTimer --;
-           this->waiting = true;
-           Stage::componentQueue.push_back(new FishBullet(this->row + 1, this->column, DOWN));
+           this->waiting = true;           
            return IDDLE; 
         }
 
@@ -131,8 +132,7 @@ int ShotterPenguin::PrepareShot(){
         && this->movementStateMachine->direction == UP
         ){
            this->shotTimer --;
-           this->waiting = true;
-           Stage::componentQueue.push_back(new FishBullet(this->row - 1, this->column, UP));
+           this->waiting = true;           
            return IDDLE; 
         }
 
@@ -150,8 +150,7 @@ int ShotterPenguin::PrepareShot(){
         && this->movementStateMachine->direction == RIGHT
         ){
            this->shotTimer --;
-           this->waiting = true;
-           Stage::componentQueue.push_back(new FishBullet(this->row, this->column+1, RIGHT));
+           this->waiting = true;           
            return IDDLE; 
         }
 
@@ -161,8 +160,7 @@ int ShotterPenguin::PrepareShot(){
         && this->movementStateMachine->direction == LEFT
         ){
            this->shotTimer --;
-           this->waiting = true;
-           Stage::componentQueue.push_back(new FishBullet(this->row, this->column-1, LEFT));
+           this->waiting = true;           
            return IDDLE; 
         }
         

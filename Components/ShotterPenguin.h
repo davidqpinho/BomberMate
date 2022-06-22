@@ -52,6 +52,7 @@
 #define SHOTTER_PENGUIN_D_S3_SX  630
 #define SHOTTER_PENGUIN_D_S3_SY  735
 #define SHOT_INTERVAL            50
+#define SHOT_TIME                25
 
 using namespace std;
 class ShotterPenguinVisitor;
