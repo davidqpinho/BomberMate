@@ -4,6 +4,9 @@
     #include <cstdlib> 
     #include <ctime>
     #include <vector>
+    #include <string>
+    #include <fstream>
+    #include <iostream>
 
     using namespace std;
 
@@ -12,6 +15,10 @@
     void itoa(int n, char s[]);
     void reverse(char s[]);
     int  strlen(char s[]);
-    
+    void AppendKeyToFile(string key, int value);
+    void CreateFile();
+    string GetFileContent();
+    int  ReadIntFromTag(string tag);    
+    bool CheckIfFileExists();
     
 #endif

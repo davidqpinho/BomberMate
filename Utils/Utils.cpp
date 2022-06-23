@@ -59,3 +59,71 @@ int strlen(char s[])
     return len;
 
 }
+
+void AppendKeyToFile(string key, int value){
+
+    fstream file;
+
+    file.open("Save.txt", ios::app);
+    
+    if (file.is_open()){
+        file << key + "::"+ to_string(value) + "$$\n";
+        file.close();
+    }
+
+}
+
+void CreateFile(){
+ 
+ fstream file;
+
+ file.open("Save.txt", ios::out);
+ 
+ if (file.is_open()){
+    file << ":::::::SAVE:::::::\n";
+    file.close();
+ }
+
+}
+
+string GetFileContent(){
+    
+    fstream file;
+    string ret = "";
+
+    file.open("Save.txt", ios::in);
+    
+    if (file.is_open()){
+        
+        string line;
+        
+        while(getline( file, line)) ret += line;        
+
+        file.close();
+    }
+
+    return ret;
+}
+
+int  ReadIntFromTag(string tag){
+    
+    string text = GetFileContent();
+    int initialPos = text.find(tag);
+    int finalPos   = text.find("$$",initialPos);
+    int payloadStart = initialPos + tag.length() + 2;
+
+    string payload = text.substr(payloadStart, finalPos - payloadStart);
+    cout << tag + "\n";
+    cout << payload + "\n";
+    return stoi( payload );
+}
+
+bool CheckIfFileExists(){
+    
+    fstream fileStream;
+
+    fileStream.open("Save.txt");
+    
+    return !fileStream.fail(); 
+        
+}

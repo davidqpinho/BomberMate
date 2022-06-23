@@ -3,9 +3,11 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <string>
 #include "../Engine/ScenesRouter.h"
 #include "../Engine/ScenesRouter.h"
 #include "../Assets/assets.h"
+#include "../Utils/Utils.h"
 #include "Stage.h"
 
 

@@ -61,7 +61,17 @@
         this->scene_->TransitionTo(new Stage(FIELDSTAGE, 0, 1, 8, 1));        
         break;
       case LOADGAME:
-        this->scene_->TransitionTo(new GameOver());
+        if(CheckIfFileExists()){        
+          this->scene_->TransitionTo(new StageTransition(
+            ReadIntFromTag("stage"), 
+            ReadIntFromTag("life"), 
+            ReadIntFromTag("bombStrength"), 
+            ReadIntFromTag("speed"), 
+            ReadIntFromTag("nOBombs")
+          ));
+        }else{
+          this->scene_->TransitionTo(new Stage(FIELDSTAGE, 0, 1, 8, 1));
+        }       
         break;
       case EXITGAME:
         return false;

@@ -1,0 +1,6 @@
+:::::::SAVE:::::::
+stage::3$$
+life::1$$
+bombStrength::2$$
+speed::8$$
+nOBombs::2$$

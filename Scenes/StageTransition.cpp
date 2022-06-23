@@ -18,6 +18,14 @@ StageTransition::~StageTransition(){
 }
 
 int StageTransition::Handle() {
+    
+    CreateFile();
+    AppendKeyToFile("stage", this->stage);
+    AppendKeyToFile("life", this->life);
+    AppendKeyToFile("bombStrength", this->bombStrength);
+    AppendKeyToFile("speed", this->speed);
+    AppendKeyToFile("nOBombs", this->nOBombs);
+
     this->scene_->TransitionTo(new Stage(
         this->stage,
         this->life,
