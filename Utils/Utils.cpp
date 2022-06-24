@@ -113,8 +113,6 @@ int  ReadIntFromTag(string tag){
     int payloadStart = initialPos + tag.length() + 2;
 
     string payload = text.substr(payloadStart, finalPos - payloadStart);
-    cout << tag + "\n";
-    cout << payload + "\n";
     return stoi( payload );
 }
 
